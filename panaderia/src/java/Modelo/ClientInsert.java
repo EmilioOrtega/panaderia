@@ -29,16 +29,18 @@ public class ClientInsert {
     
     
     public void insertar(){
-        Cliente cliente = new Cliente();
-        cliente.insertUser();
-        /*
-        Cliente usuario = new Cliente(this.nombre, this.apellido_p, this.apellido_m, this.contra, this.correo, this.telefono);
+        //Cliente cliente = new Cliente();
+        //cliente.insertUser();
+        
+        //Cliente usuario = new Cliente(this.nombre, this.apellido_p, this.apellido_m, this.contra, this.correo, this.telefono);
+        
+        Cliente usuario = new Cliente("e", "e", "e", "e", "e", "e");
         EntityManagerFactory emf;
         EntityManager em;
         emf = Persistence.createEntityManagerFactory("panaderiaPU");
         em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(usuario);
-        em.getTransaction().commit();     */   
+        em.getTransaction().commit();       
     }
 }
