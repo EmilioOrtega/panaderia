@@ -7,6 +7,7 @@ package Modelo;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -19,27 +20,25 @@ import javax.persistence.Persistence;
 @RequestScoped
 public class ClientInsert {
     
-    String nombre;
-    String apellido_p;
-    String apellido_m;
-    String contra;
-    String correo;
-    String telefono;
+    public String nombre;
+    public String apellido_p;
+    public String apellido_m;
+    public String contra;
+    public String correo;
+    public String telefono;
     
-    public void in(){
-        System.out.println("Holaaaaa");
-    }
+    
     public void insertar(){
-        System.out.println("Holaaaaa");
-        Cliente usuario = new Cliente("a", "a", "a", "a", "a", "a");
+        Cliente cliente = new Cliente();
+        cliente.insertUser();
+        /*
+        Cliente usuario = new Cliente(this.nombre, this.apellido_p, this.apellido_m, this.contra, this.correo, this.telefono);
         EntityManagerFactory emf;
         EntityManager em;
         emf = Persistence.createEntityManagerFactory("panaderiaPU");
         em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(usuario);
-        em.getTransaction().commit();
-        
-        //return "register";
+        em.getTransaction().commit();     */   
     }
 }

@@ -11,7 +11,27 @@
     </h:head>
     <h:body>
         <h:form>  
-            <p:commandButton value="Registro" action="register" />
+            
+            <h:outputLabel for="username" value="Nombre: " />
+            <p:inputText id="txtNombre" value="#{cliente.nombre}" required="true" label="Nombre" />
+            
+            <h:outputLabel for="username" value="Apelldio Paterno: " />
+            <p:inputText id="txtApelldioP" value="#{cliente.apellido_p}" required="true" label="ApelldioP" />
+            
+            <h:outputLabel for="username" value="Apelldio Materno: " />
+            <p:inputText id="txtApelldioM" value="#{cliente.apellido_m}" required="true" label="ApelldioM" />
+            
+            <h:outputLabel for="username" value="Contrasena: " />
+            <p:inputText id="txtContra" value="#{cliente.contra}" required="true" label="contra" />    
+            
+            <h:outputLabel for="username" value="Correo: " />
+            <p:inputText id="txtCorreo" value="#{cliente.correo}" required="true" label="correo" /> 
+            
+            <h:outputLabel for="username" value="Telefono: " />
+            <p:inputText id="txtTelefono" value="#{cliente.telefono}" required="true" label="telefono" /> 
+            
+            <p:commandButton value="Registro" action="#{client.insertar()}" />
+            
         </h:form>
         
 <script type="text/javascript">
