@@ -13,22 +13,22 @@
         <h:form>  
             
             <h:outputLabel for="username" value="Nombre: " />
-            <p:inputText id="txtNombre" value="#{cliente.nombre}" required="true" label="Nombre" />
+            <p:inputText id="txtNombre" value="#{client.nombre}" required="true" label="Nombre" />
             
             <h:outputLabel for="username" value="Apelldio Paterno: " />
-            <p:inputText id="txtApelldioP" value="#{cliente.apellido_p}" required="true" label="ApelldioP" />
+            <p:inputText id="txtApelldioP" value="#{client.apellido_p}" required="true" label="ApelldioP" />
             
             <h:outputLabel for="username" value="Apelldio Materno: " />
-            <p:inputText id="txtApelldioM" value="#{cliente.apellido_m}" required="true" label="ApelldioM" />
+            <p:inputText id="txtApelldioM" value="#{client.apellido_m}" required="true" label="ApelldioM" />
             
             <h:outputLabel for="username" value="Contrasena: " />
-            <p:inputText id="txtContra" value="#{cliente.contra}" required="true" label="contra" />    
+            <p:inputText id="txtContra" value="#{client.contra}" required="true" label="contra" />    
             
             <h:outputLabel for="username" value="Correo: " />
-            <p:inputText id="txtCorreo" value="#{cliente.correo}" required="true" label="correo" /> 
+            <p:inputText id="txtCorreo" value="#{client.correo}" required="true" label="correo" /> 
             
             <h:outputLabel for="username" value="Telefono: " />
-            <p:inputText id="txtTelefono" value="#{cliente.telefono}" required="true" label="telefono" /> 
+            <p:inputText id="txtTelefono" value="#{client.telefono}" required="true" label="telefono" /> 
             
             <p:commandButton value="Registro" action="#{client.insertar()}" />
             

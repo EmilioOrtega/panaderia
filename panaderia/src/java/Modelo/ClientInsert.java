@@ -26,15 +26,59 @@ public class ClientInsert {
     public String contra;
     public String correo;
     public String telefono;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido_p() {
+        return apellido_p;
+    }
+
+    public void setApellido_p(String apellido_p) {
+        this.apellido_p = apellido_p;
+    }
+
+    public String getApellido_m() {
+        return apellido_m;
+    }
+
+    public void setApellido_m(String apellido_m) {
+        this.apellido_m = apellido_m;
+    }
+
+    public String getContra() {
+        return contra;
+    }
+
+    public void setContra(String contra) {
+        this.contra = contra;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
     
     
     public void insertar(){
-        //Cliente cliente = new Cliente();
-        //cliente.insertUser();
         
-        //Cliente usuario = new Cliente(this.nombre, this.apellido_p, this.apellido_m, this.contra, this.correo, this.telefono);
-        
-        Cliente usuario = new Cliente("e", "e", "e", "e", "e", "e");
+        Cliente usuario = new Cliente(this.nombre, this.apellido_p, this.apellido_m, this.contra, this.correo, this.telefono);
         EntityManagerFactory emf;
         EntityManager em;
         emf = Persistence.createEntityManagerFactory("panaderiaPU");

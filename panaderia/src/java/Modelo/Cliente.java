@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Persistence;
 import javax.persistence.Table;
 
@@ -23,6 +25,11 @@ import javax.persistence.Table;
 @ManagedBean
 @Entity 
 @Table (name ="cliente")
+@NamedQueries({
+    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
+    , @NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.id_cliente = :id_cliente")
+    , @NamedQuery(name = "Cliente.findByContra", query = "SELECT c FROM Cliente c WHERE c.contra = :contra")
+    , @NamedQuery(name = "Cliente.findByNombre", query = "SELECT c FROM Cliente c WHERE c.nombre = :nombre")})
 public class Cliente {
     
     @Id
