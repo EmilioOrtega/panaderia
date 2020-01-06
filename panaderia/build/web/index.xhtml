@@ -5,7 +5,6 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-
         <Title>Panaderia</Title>
     </h:head>
     <h:body  style="background-color: gray; width: 1200px; height: 600px; border: 0; padding: 0; margin: 0; background-image: url('fondo_panaderia.jpg');background-repeat: no-repeat; background-position: center; background-size: 100% 100%">
@@ -102,6 +101,56 @@
                 </p:dialog>    
             </h:form>
         </div>
+
+    <h:body>
+        <h:form>  
+            
+            <h:outputLabel for="username" value="Nombre: " />
+            <p:inputText id="txtNombre" value="#{client.nombre}" required="true" label="Nombre" />
+            
+            <h:outputLabel for="username" value="Apelldio Paterno: " />
+            <p:inputText id="txtApelldioP" value="#{client.apellido_p}" required="true" label="ApelldioP" />
+            
+            <h:outputLabel for="username" value="Apelldio Materno: " />
+            <p:inputText id="txtApelldioM" value="#{client.apellido_m}" required="true" label="ApelldioM" />
+            
+            <h:outputLabel for="username" value="Contrasena: " />
+            <p:inputText id="txtContra" value="#{client.contra}" required="true" label="contra" />    
+            
+            <h:outputLabel for="username" value="Correo: " />
+            <p:inputText id="txtCorreo" value="#{client.correo}" required="true" label="correo" /> 
+            
+            <h:outputLabel for="username" value="Telefono: " />
+            <p:inputText id="txtTelefono" value="#{client.telefono}" required="true" label="telefono" /> 
+            
+            <p:commandButton value="Registro" action="#{client.insertar()}" />
+            
+        </h:form>
+<h:form>        
+    <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
+        <p:graphicImage name="/demo/images/login.png" />
+    </h:outputLink>
+     
+    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+     
+    <p:dialog header="Login" widgetVar="dlg" resizable="false">
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="username" value="Username:" />
+            <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
+             
+            <h:outputLabel for="password" value="Password:" />
+            <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
+             
+            <f:facet name="footer">
+                <p:commandButton value="Login" update="growl" action="#{userLoginView.login}"
+                                 oncomplete="handleLoginRequest(xhr, status, args)" />
+                
+                <p:commandButton value="Registro" update="growl" action="#{client.insertar()}"
+                                 oncomplete="handleLoginRequest(xhr, status, args)" />
+            </f:facet>  
+        </h:panelGrid>
+    </p:dialog>    
+</h:form>
     </h:body>
 </html>
 

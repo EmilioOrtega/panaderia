@@ -3,6 +3,12 @@
   <persistence-unit name="panaderiaPU" transaction-type="JTA">
     <jta-data-source>java:app/panaderiaa</jta-data-source>
     <class>Modelo.Cliente</class>
+    <class>Modelo.Departamento</class>
+    <class>Modelo.Factura</class>
+    <class>Modelo.Ingrediente</class>
+    <class>Modelo.Pan</class>
+    <class>Modelo.Proveedor</class>
+    <class>Modelo.Encuesta</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

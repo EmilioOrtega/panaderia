@@ -5,13 +5,13 @@
  */
 package Modelo;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Persistence;
 import javax.persistence.Table;
 
@@ -20,9 +20,13 @@ import javax.persistence.Table;
  * @author Emilio
  */
 
-@ManagedBean
 @Entity 
 @Table (name ="cliente")
+@NamedQueries({
+    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
+    , @NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.id_cliente = :id_cliente")
+    , @NamedQuery(name = "Cliente.findByContra", query = "SELECT c FROM Cliente c WHERE c.contra = :contra")
+    , @NamedQuery(name = "Cliente.findByNombre", query = "SELECT c FROM Cliente c WHERE c.nombre = :nombre")})
 public class Cliente {
     
     @Id
@@ -107,27 +111,5 @@ public class Cliente {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    public void insertUser() {
-        ClientInsert login = new ClientInsert();
-        login.nombre = this.nombre;
-        login.apellido_p = this.apellido_p;
-        login.apellido_m = this.apellido_m;
-        login.contra = this.contra;
-        login.correo = this.correo;
-        login.telefono = this.telefono;
-        Cliente usuario = new Cliente(this.nombre, this.apellido_p, this.apellido_m, this.contra, this.correo, this.telefono);
-        //Cliente usuario = new Cliente(this.nombre, this.apellido_p, this.apellido_m, "a", "a", "a");
-        EntityManagerFactory emf;
-        EntityManager em;
-        emf = Persistence.createEntityManagerFactory("panaderiaPU");
-        em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(usuario);
-        em.getTransaction().commit();
-    }
-    
-    
-    
     
 }
