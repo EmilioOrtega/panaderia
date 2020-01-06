@@ -5,8 +5,6 @@
  */
 package Modelo;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -22,7 +20,6 @@ import javax.persistence.Table;
  * @author Emilio
  */
 
-@ManagedBean
 @Entity 
 @Table (name ="cliente")
 @NamedQueries({
@@ -114,27 +111,5 @@ public class Cliente {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    public void insertUser() {
-        ClientInsert login = new ClientInsert();
-        login.nombre = this.nombre;
-        login.apellido_p = this.apellido_p;
-        login.apellido_m = this.apellido_m;
-        login.contra = this.contra;
-        login.correo = this.correo;
-        login.telefono = this.telefono;
-        Cliente usuario = new Cliente(this.nombre, this.apellido_p, this.apellido_m, this.contra, this.correo, this.telefono);
-        //Cliente usuario = new Cliente(this.nombre, this.apellido_p, this.apellido_m, "a", "a", "a");
-        EntityManagerFactory emf;
-        EntityManager em;
-        emf = Persistence.createEntityManagerFactory("panaderiaPU");
-        em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(usuario);
-        em.getTransaction().commit();
-    }
-    
-    
-    
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Beans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import Modelo.Cliente;
 
 /**
  *
@@ -77,7 +78,7 @@ public class ClientInsert {
     
     
     public void insertar(){
-        
+       
         Cliente usuario = new Cliente(this.nombre, this.apellido_p, this.apellido_m, this.contra, this.correo, this.telefono);
         EntityManagerFactory emf;
         EntityManager em;
