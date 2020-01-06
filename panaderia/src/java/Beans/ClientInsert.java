@@ -12,6 +12,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import Modelo.Cliente;
+import java.util.Iterator;
+import java.util.List;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -77,8 +81,7 @@ public class ClientInsert {
     }
     
     
-    public void insertar(){
-       
+    public void insertar(){       
         Cliente usuario = new Cliente(this.nombre, this.apellido_p, this.apellido_m, this.contra, this.correo, this.telefono);
         EntityManagerFactory emf;
         EntityManager em;
@@ -87,5 +90,22 @@ public class ClientInsert {
         em.getTransaction().begin();
         em.persist(usuario);
         em.getTransaction().commit();       
+    }
+    
+    public void login(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panaderiaPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction entr = em.getTransaction();
+        entr.begin();
+        Query query = em.createNamedQuery("Cliente.findByNombre").setParameter("nombre", this.nombre);
+        
+        List clienteList = query.getResultList();
+        Iterator clienteIterator = clienteList .iterator();
+        while (clienteIterator.hasNext()) {
+            Cliente cliente= (Cliente) clienteIterator.next();
+            this.correo = cliente.getCorreo();
+            System.out.print("Nombre:" + cliente.getNombre() + " " + cliente.getCorreo());
+            System.out.println();                                
+        }
     }
 }

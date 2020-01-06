@@ -3,36 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Beans;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import Modelo.Encuesta;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
  * @author Emilio
  */
-@Entity
-@Table (name = "encuesta")
-public class Encuesta {
-    @Id
-    @Column
-    private int id_encuesta;
-    @Column 
-    private String pregunta1;
-    @Column
-    private String pregunta2;
-    @Column 
-    private String pregunta3;
-    @Column 
-    private String pregunta4;
-
-    public Encuesta() {
-    }
+@ManagedBean (name = "encuestaBean")
+@RequestScoped
+public class EncuestaBean {
     
-    public Encuesta(String pregunta1, String pregunta2, String pregunta3, String pregunta4) {
+    public int id_encuesta;
+    public String pregunta1;
+    public String pregunta2;
+    public String pregunta3;
+    public String pregunta4;
+
+    public EncuestaBean() {
+    }
+
+    public EncuestaBean(String pregunta1, String pregunta2, String pregunta3, String pregunta4) {
         this.pregunta1 = pregunta1;
         this.pregunta2 = pregunta2;
         this.pregunta3 = pregunta3;
@@ -77,5 +74,16 @@ public class Encuesta {
 
     public void setPregunta4(String pregunta4) {
         this.pregunta4 = pregunta4;
+    }
+    
+    public void insertar(){       
+        Encuesta encuesta = new Encuesta(this.pregunta1, this.pregunta2, this.pregunta3, this.pregunta4);
+        EntityManagerFactory emf;
+        EntityManager em;
+        emf = Persistence.createEntityManagerFactory("panaderiaPU");
+        em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(encuesta);
+        em.getTransaction().commit();       
     }
 }
