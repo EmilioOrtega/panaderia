@@ -5,10 +5,103 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        
         <Title>Panaderia</Title>
-        
     </h:head>
+    <h:body  style="background-color: gray; width: 1200px; height: 600px; border: 0; padding: 0; margin: 0; background-image: url('fondo_panaderia.jpg');background-repeat: no-repeat; background-position: center; background-size: 100% 100%">
+        <div style="background-color: transparent; position: absolute; right: 600px; top: 100px; height: 400px; width: 80px;">
+            <h:form>        
+                <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
+                    <img alt="" src="login.png" style="position: absolute; left: 0px; top: 0px; height: 80px; width: 80px;"/>
+                    <h:outputLabel for="Login" value="Login" style="color: green; position: absolute; left: 0px; top: 80px; font-size: 20px;" />
+                </h:outputLink>
+
+                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+                <p:dialog header="Login" widgetVar="dlg" resizable="false">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="username" value="Nombre:" />
+                        <p:inputText id="txtNombre" value="#{userLoginView.username}" required="true" label="username" />
+
+                        <h:outputLabel for="password" value="Contrasena:" />
+                        <p:password id="password" value="#{userLoginView.password}" required="true" label="Contrasena" />
+
+                        <f:facet name="footer">
+                            <p:commandButton value="Login" update="growl" action="#{userLoginView.login}"
+                                             oncomplete="handleLoginRequest(xhr, status, args)" />
+                        </f:facet>  
+                    </h:panelGrid>
+                </p:dialog>    
+            </h:form>
+            <h:form>        
+                <h:outputLink value="javascript:void(0)" onclick="PF('dlg2').show();" title="Visitante">
+                    <img alt="" src="visitante.jpg" style="position: absolute; left: 0px; top: 100px; height: 80px; width: 80px;"/>
+                    <h:outputLabel for="Visitante" value="Visitante" style="color: green; position: absolute; left: 0px; top: 180px; font-size: 20px;" />
+                </h:outputLink>
+                <p:dialog header="Visitante" widgetVar="dlg2" resizable="false">
+                    
+                </p:dialog>    
+            </h:form>
+            <h:form>        
+                <h:outputLink value="javascript:void(0)" onclick="PF('dlg3').show();" title="Admin">
+                    <img alt="" src="admin.png" style="position: absolute; left: 0px; top: 200px; height: 80px; width: 80px;"/>
+                    <h:outputLabel for="Admin" value="Admin" style="color: green; position: absolute; left: 0px; top: 280px; font-size: 20px;" />
+                </h:outputLink>
+
+                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+                <p:dialog header="Administrador" widgetVar="dlg3" resizable="false">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="username" value="Nombre:" />
+                        <p:password id="username" value="#{userLoginView.username}" required="true" label="Nombre" />
+
+                        <h:outputLabel for="password" value="Contrasena:" />
+                        <p:password id="password" value="#{userLoginView.password}" required="true" label="Contrasena" />
+
+                        <f:facet name="footer">
+                            <p:commandButton value="Login" update="growl" action="#{userLoginView.login}"
+                                             oncomplete="handleLoginRequest(xhr, status, args)" />
+                        </f:facet>  
+                    </h:panelGrid>
+                </p:dialog>    
+            </h:form>
+            <h:form>        
+                <h:outputLink value="javascript:void(0)" onclick="PF('dlg4').show();" title="Registro">
+                    <img alt="" src="registro.jpg" style="position: absolute; left: 0px; top: 300px; height: 80px; width: 80px;"/>
+                    <h:outputLabel for="Registro" value="Registro" style="color: green; position: absolute; left: 0px; top: 380px; font-size: 20px;" />
+                </h:outputLink>
+
+                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+                <p:dialog header="Registro" widgetVar="dlg4" resizable="false">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputLabel for="username" value="Username:" />
+                        <p:inputText id="username" value="#{userLoginView.username}" required="true" label="username" />
+
+                        <h:outputLabel for="apellido_p" value="Apellido P:" />
+                        <p:inputText id="apellido_p" value="#{userLoginView.password}" required="true" label="apellido_p" />
+                        
+                        <h:outputLabel for="apellido_m" value="Apellido M" />
+                        <p:inputText id="apellido_m" value="#{userLoginView.username}" required="true" label="apellido_m" />
+
+                        <h:outputLabel for="password" value="Password:" />
+                        <p:password id="password" value="#{userLoginView.password}" required="true" label="password" />
+                        
+                        <h:outputLabel for="correo" value="Correo:" />
+                        <p:inputText id="correo" value="#{userLoginView.username}" required="true" label="correo" />
+
+                        <h:outputLabel for="telefono" value="Teléfono:" />
+                        <p:inputText id="telefono" value="#{userLoginView.password}" required="true" label="telefono"/>
+
+                        <f:facet name="footer">
+
+                            <p:commandButton value="Registro" update="growl" action="#{client.insertar()}"
+                                             oncomplete="handleLoginRequest(xhr, status, args)" />
+                        </f:facet>  
+                    </h:panelGrid>
+                </p:dialog>    
+            </h:form>
+        </div>
+
     <h:body>
         <h:form>  
             
@@ -33,20 +126,6 @@
             <p:commandButton value="Registro" action="#{client.insertar()}" />
             
         </h:form>
-        
-<script type="text/javascript">
-    function handleLoginRequest(xhr, status, args) {
-        if(args.validationFailed || !args.loggedIn) {
-            PF('dlg').jq.effect("shake", {times:5}, 100);
-        }
-        else {
-            PF('dlg').hide();
-            $('#loginLink').fadeOut();
-        }
-    }
-</script>
- 
- 
 <h:form>        
     <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
         <p:graphicImage name="/demo/images/login.png" />
