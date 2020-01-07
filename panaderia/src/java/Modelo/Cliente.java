@@ -5,14 +5,18 @@
  */
 package Modelo;
 
+import java.util.Iterator;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.Table;
 
 /**
@@ -55,7 +59,12 @@ public class Cliente {
         this.correo = correo;
         this.telefono = telefono;
     }
-
+    
+    public Cliente(String nombre, String apellido_p){
+        this.nombre = nombre;
+        this.contra = contra;
+    }
+    
     public int getId_cliente() {
         return id_cliente;
     }
@@ -110,6 +119,16 @@ public class Cliente {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+    public List<Cliente> login(String name){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panaderiaPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction entr = em.getTransaction();
+        entr.begin();
+        Query query = em.createNamedQuery("Cliente.findByNombre");
+        query.setParameter("nombre", name);
+        List<Cliente> datos = (List<Cliente>) query.getResultList();
+        return datos;
     }
     
 }

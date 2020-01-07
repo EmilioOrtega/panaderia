@@ -31,7 +31,26 @@ public class ClientInsert {
     public String contra;
     public String correo;
     public String telefono;
+    public String pu;
 
+    public String getPu() {
+        return pu;
+    }
+
+    public void setPu(String pu) {
+        this.pu = pu;
+    }
+    
+    public List<Cliente> listClientes;
+
+    public List<Cliente> getListClientes() {
+        return listClientes;
+    }
+
+    public void setListClientes(List<Cliente> listClientes) {
+        this.listClientes = listClientes;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -80,7 +99,6 @@ public class ClientInsert {
         this.telefono = telefono;
     }
     
-    
     public void insertar(){       
         Cliente usuario = new Cliente(this.nombre, this.apellido_p, this.apellido_m, this.contra, this.correo, this.telefono);
         EntityManagerFactory emf;
@@ -92,20 +110,13 @@ public class ClientInsert {
         em.getTransaction().commit();       
     }
     
-    public void login(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panaderiaPU");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction entr = em.getTransaction();
-        entr.begin();
-        Query query = em.createNamedQuery("Cliente.findByNombre").setParameter("nombre", this.nombre);
-        
-        List clienteList = query.getResultList();
-        Iterator clienteIterator = clienteList .iterator();
-        while (clienteIterator.hasNext()) {
-            Cliente cliente= (Cliente) clienteIterator.next();
-            this.correo = cliente.getCorreo();
-            System.out.print("Nombre:" + cliente.getNombre() + " " + cliente.getCorreo());
-            System.out.println();                                
-        }
+    public void log(){
+        Cliente user;
+        user = new Cliente();  
+        listClientes = user.login(this.nombre);
+        for (Cliente a : listClientes) {
+        }    
+        //this.pu = "hola";
     }
+         
 }

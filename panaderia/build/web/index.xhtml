@@ -26,9 +26,24 @@
                         <p:password id="password" value="#{client.contra}" required="true" label="Contrasena" />
 
                         <f:facet name="footer">
-                            <p:commandButton value="Login" update="growl" action="#{client.login()}" 
+                            <p:commandButton value="Login" action="#{client.log()}" update ="data"
                                              oncomplete="handleLoginRequest(xhr, status, args)" />
-                        </f:facet>  
+                        </f:facet> 
+                        <p:dataTable id="data" value="#{client.listClientes}" var="cliente">
+                            <p:column headerText="Nombre">
+                                <p:outputLabel value="#{cliente.nombre}"/>
+                            </p:column>
+                            <p:column headerText="Contra">
+                                <p:outputLabel value="#{cliente.contra}"/>
+                            </p:column>
+                            <p:column headerText="Correo">
+                                <p:outputLabel value="#{cliente.correo}"/>
+                            </p:column> 
+                            <p:column headerText="Prueba">
+                                <p:outputLabel value="#{client.pu}"/>
+                            </p:column>
+                        </p:dataTable>
+                        
                     </h:panelGrid>
                 </p:dialog>    
             </h:form>
