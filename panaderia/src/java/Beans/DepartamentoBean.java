@@ -9,6 +9,7 @@ import Modelo.Departamento;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
@@ -16,11 +17,20 @@ import javax.faces.bean.RequestScoped;
  */
 @ManagedBean (name = "departamentoBean")
 @RequestScoped
+@ViewScoped
 public class DepartamentoBean {
     public int id_departamento;
     public String nombre;
     public List<Departamento> listDepartamento;
-
+    
+    public DepartamentoBean(){
+        showDepartments();
+    }
+    
+    public DepartamentoBean(int id_departamento, String nombre) {
+        this.id_departamento = id_departamento;
+        this.nombre = nombre;
+    }
     public List<Departamento> getListDepartamento() {
         return listDepartamento;
     }
@@ -28,12 +38,12 @@ public class DepartamentoBean {
     public void setListDepartamento(List<Departamento> listDepartamento) {
         this.listDepartamento = listDepartamento;
     }
-    public DepartamentoBean(){
-        
-    }
-    
-    public DepartamentoBean(int id_departamento, String nombre) {
+
+    public void setId_departamento(int id_departamento) {
         this.id_departamento = id_departamento;
+    }
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
@@ -48,9 +58,6 @@ public class DepartamentoBean {
     public void showDepartments(){
         Departamento department;
         department = new Departamento();  
-        listDepartamento = department.getItems();
-        for (Departamento a : listDepartamento) {
-            //this.nombre = a.getNombre();
-        }    
+        listDepartamento = department.getItems();            
     }
 }

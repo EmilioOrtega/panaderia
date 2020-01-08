@@ -5,9 +5,17 @@
  */
 package Modelo;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.Table;
 
 /**
@@ -17,6 +25,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "proveedor")
+@NamedQueries({
+    @NamedQuery(name = "Proveedor.findAll", query = "SELECT p FROM Proveedor p")
+    , @NamedQuery(name = "Proveedor.findByNombre", query = "SELECT p FROM Proveedor p WHERE p.nombre = :nombre")})
 public class Proveedor {
     @Id
     @Column
@@ -67,5 +78,15 @@ public class Proveedor {
 
     public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
+    }
+    
+    public List<Proveedor> setItems(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panaderiaPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction entr = em.getTransaction();
+        entr.begin();
+        Query query = em.createNamedQuery("Proveedor.findAll");
+        List<Proveedor> datos = (List<Proveedor>) query.getResultList();
+        return datos;    
     }
 }

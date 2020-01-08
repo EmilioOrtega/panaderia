@@ -7,6 +7,11 @@ package Beans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import Modelo.Pan;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -21,10 +26,19 @@ public class PanBean {
     public String precio;
     public String cantidad;
     public String caducidad;
-    public int id_ingrediente;
     public int id_departamento;
+    
+    public List<Pan> listPan;
 
+    public List<Pan> getListPan() {
+        return listPan;
+    }
+
+    public void setListPan(List<Pan> listPan) {
+        this.listPan = listPan;
+    }
     public PanBean() {
+        log();
     }
 
     public PanBean(String nombre, String precio, String cantidad, String caducidad, int id_ingrediente, int id_departamento) {
@@ -32,7 +46,6 @@ public class PanBean {
         this.precio = precio;
         this.cantidad = cantidad;
         this.caducidad = caducidad;
-        this.id_ingrediente = id_ingrediente;
         this.id_departamento = id_departamento;
     }
 
@@ -75,15 +88,6 @@ public class PanBean {
     public void setCaducidad(String caducidad) {
         this.caducidad = caducidad;
     }
-
-    public int getId_ingrediente() {
-        return id_ingrediente;
-    }
-
-    public void setId_ingrediente(int id_ingrediente) {
-        this.id_ingrediente = id_ingrediente;
-    }
-
     public int getId_departamento() {
         return id_departamento;
     }
@@ -91,5 +95,56 @@ public class PanBean {
     public void setId_departamento(int id_departamento) {
         this.id_departamento = id_departamento;
     }
-    
+    public void insertar(){       
+        Pan pan = new Pan(this.nombre, this.precio, this.cantidad, this.caducidad, this.id_departamento);
+        EntityManagerFactory emf;
+        EntityManager em;
+        emf = Persistence.createEntityManagerFactory("panaderiaPU");
+        em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(pan);
+        em.getTransaction().commit();       
+    }
+    public void eliminar(){
+        try{          
+            EntityManagerFactory emf;
+            emf = Persistence.createEntityManagerFactory("panaderiaPU");
+            EntityManager em = emf.createEntityManager();
+            em.getEntityManagerFactory();
+            Pan pan = em.find(Pan.class, this.id_pan);            
+            em.getTransaction().begin();
+            em.remove(pan);   
+            em.getTransaction().commit();
+            
+        }catch(Exception e){
+            throw e;
+        }
+    }
+    public void modificar(){
+        try{          
+            EntityManagerFactory emf;
+            emf = Persistence.createEntityManagerFactory("panaderiaPU");
+            EntityManager em = emf.createEntityManager();
+            em.getEntityManagerFactory();
+            Pan ingrediente = em.find(Pan.class, this.id_pan);            
+            em.getTransaction().begin();
+            ingrediente.setNombre(this.nombre);
+            ingrediente.setPrecio(this.precio);
+            ingrediente.setCantidad(this.cantidad);
+            ingrediente.setCaducidad(this.caducidad);
+            em.getTransaction().commit();
+            
+        }catch(Exception e){
+            throw e;
+        }
+    }
+    public void log(){
+        try{
+            Pan user;
+            user = new Pan();  
+            listPan = user.setItems();    
+        }catch(Exception e){
+            throw e;
+        }
+    }
 }

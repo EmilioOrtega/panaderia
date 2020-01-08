@@ -27,18 +27,23 @@ and open the template in the editor.
                 <p:dialog header="Agregar" widgetVar="dlg" resizable="false">
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel  value="Nombre:" />
-                        <p:inputText id="txtNombre" value="#{client.nombre}" required="true" label="username" />
+                        <p:inputText id="txtNombre" value="#{panBean.nombre}" required="true" label="username" />
 
                         <h:outputLabel  value="Precio:" />
-                        <p:inputText id="txtPrecio" value="#{client.nombre}" required="true" label="precio" />
+                        <p:inputText id="txtPrecio" value="#{panBean.precio}" required="true" label="precio" />
 
                         <h:outputLabel  value="Cantidad:" />
-                        <p:inputText id="txtCantidad" value="#{client.nombre}" required="true" label="cantidad" />
+                        <p:inputText id="txtCantidad" value="#{panBean.cantidad}" required="true" label="cantidad" />
 
                         <h:outputLabel  value="Caducidad:" />
-                        <p:inputText id="txtCaducidad" value="#{client.nombre}" required="true" label="caducidad" />
+                        <p:inputText id="txtCaducidad" value="#{panBean.caducidad}" required="true" label="caducidad" />
+                        
+                        <p:selectOneMenu id="departamento1" value="#{panBean.id_departamento}">
+                            <f:selectItem itemLabel="elija el departamento" itemValue="0"  noSelectionOption="true" />
+                            <f:selectItems value="#{departamentoBean.listDepartamento}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id_departamento}"/>
+                        </p:selectOneMenu>
                         <f:facet name="footer">
-                            <p:commandButton value="Agregar" action="#{client.log()}"/>
+                            <p:commandButton value="Agregar" action="#{panBean.insertar()}"/>
                         </f:facet> 
                     </h:panelGrid>
                 </p:dialog>    
@@ -53,12 +58,13 @@ and open the template in the editor.
                 <p:dialog header="Eliminar" widgetVar="dlg2" resizable="false">
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel  value="Panes: " />
-                        <p:selectOneMenu id="pans1" value="#{dropdownView.panes}" style="width:150px">
-                            <f:selectItem itemLabel="elija el Pan" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{dropdownView.countries}" />
+                        <p:selectOneMenu id="pan1" value="#{panBean.id_pan}">
+                            <f:selectItem itemLabel="elija el pan" itemValue="0"  noSelectionOption="true" />
+                            <f:selectItems value="#{panBean.listPan}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id_pan}"/>
+                            
                         </p:selectOneMenu>
                         <f:facet name="footer">
-                            <p:commandButton value="Eliminar" action="#{client.log()}"/>
+                            <p:commandButton value="Eliminar" action="#{panBean.eliminar()}"/>
                         </f:facet> 
                     </h:panelGrid>
                 </p:dialog>    
@@ -73,23 +79,25 @@ and open the template in the editor.
                 <p:dialog header="Modificar" widgetVar="dlg3" resizable="false">
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel  value="Panes: " />
-                        <p:selectOneMenu id="pans" value="#{dropdownView.panes}" style="width:150px">
-                            <f:selectItem itemLabel="elija el Pan" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{dropdownView.countries}" />
+                        <p:selectOneMenu id="pan1" value="#{panBean.id_pan}">
+                            <f:selectItem itemLabel="elija el pan" itemValue="0"  noSelectionOption="true" />
+                            <f:selectItems value="#{panBean.listPan}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id_pan}"/>
+                            
                         </p:selectOneMenu>
                         <h:outputLabel  value="Nombre:" />
-                        <p:inputText id="txtNombre" value="#{client.nombre}" required="true" label="username" />
+                        <p:inputText id="txtNombre" value="#{panBean.nombre}" required="true" label="username" />
 
                         <h:outputLabel  value="Precio:" />
-                        <p:inputText id="txtPrecio" value="#{client.nombre}" required="true" label="precio" />
+                        <p:inputText id="txtPrecio" value="#{panBean.precio}" required="true" label="precio" />
 
                         <h:outputLabel  value="Cantidad:" />
-                        <p:inputText id="txtCantidad" value="#{client.nombre}" required="true" label="cantidad" />
+                        <p:inputText id="txtCantidad" value="#{panBean.cantidad}" required="true" label="cantidad" />
 
                         <h:outputLabel  value="Caducidad:" />
-                        <p:inputText id="txtCaducidad" value="#{client.nombre}" required="true" label="caducidad" />
+                        <p:inputText id="txtCaducidad" value="#{panBean.caducidad}" required="true" label="caducidad" />
+                        
                         <f:facet name="footer">
-                            <p:commandButton value="Modificar" action="#{client.log()}"/>
+                            <p:commandButton value="Modificar" action="#{panBean.modificar()}"/>
                         </f:facet> 
                     </h:panelGrid>
                 </p:dialog>    

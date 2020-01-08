@@ -24,7 +24,7 @@ import javax.persistence.Table;
 @Entity
 @Table (name = "departamento")
 @NamedQueries({
-    @NamedQuery(name = "Departamento.findAll", query = "SELECT c FROM Cliente c")
+    @NamedQuery(name = "Departamento.findAll", query = "SELECT d FROM Departamento d")
     , @NamedQuery(name = "Departamento.findByNombre", query = "SELECT d FROM Departamento d WHERE d.nombre = :nombre")})
 public class Departamento {
     @Id

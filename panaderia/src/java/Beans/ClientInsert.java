@@ -111,12 +111,13 @@ public class ClientInsert {
     }
     
     public void log(){
-        Cliente user;
-        user = new Cliente();  
-        listClientes = user.login(this.nombre);
-        for (Cliente a : listClientes) {
-        }    
-        //this.pu = "hola";
+        try{
+            Cliente user;
+            user = new Cliente();  
+            listClientes = user.login(this.nombre);
+        }catch(Exception e){
+            throw e;
+        }        
     }
          
 }

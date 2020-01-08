@@ -17,23 +17,25 @@ and open the template in the editor.
         <h:form>
             <h:outputLabel for="bienvenido_admin" value="Bienvenido administrador" style="font-size: 45px; margin-left: 20px; margin-top: 20px; color: white " />
             <h:graphicImage value="incognito_admin.png" style="position: absolute; left: 550px; top: 0px; height: 150px; width: 100px;" />
-            <p:dataTable var="car" value="#{dtBasicView.cars}" style="margin-top: 100px; background-color: lightyellow; margin-left: 375px;width:450px;">
-                <p:column headerText="Pan">
-                    <h:outputText value="#{car.pan}" />
-                </p:column>
-
+            <p:dataTable id = "data1" var="ingrediente" value="#{ingredienteBean.listIngredientes}" style="margin-top: 100px; background-color: lightyellow; margin-left: 375px;width:200px;">
                 <p:column headerText="Ingredientes">
-                    <h:outputText value="#{car.ingredientes}" />
+                    <h:outputText value="#{ingrediente.nombre}" />
                 </p:column>
-
-                <p:column headerText="Proveedores">
-                    <h:outputText value="#{car.proveedores}" />
+            </p:dataTable>
+            <p:dataTable id = "data2" var="pan" value="#{panBean.listPan}" style="margin-top: 100px; background-color: lightyellow; margin-left: 375px;width:200px;">
+                <p:column headerText="Pan">
+                    <h:outputText value="#{pan.nombre}" />
                 </p:column>
-
+            </p:dataTable>
+            <p:dataTable id = "data3" var="proveedor" value="#{proveedorBean.listProveedor}" style="margin-top: 100px; background-color: lightyellow; margin-left: 375px;width:200px;">
+                <p:column headerText="Proveedor">
+                    <h:outputText value="#{proveedor.nombre}" />
+                </p:column>
             </p:dataTable>
             <h:button value="CRUD Pan"  outcome="/CRUD_pan"  style="margin-left:375px;top:0px; width: 150px; height: 55px;"/>
             <h:button value="CRUD Ingredientes"  outcome="/CRUD_ingredientes" style="top:0px;margin-left:0px;width: 150px; height: 55px;"/>
             <h:button value="CRUD Proveedores"  outcome="/CRUD_proveedores" style="top:0px;margin-left:0px;width: 150px; height: 55px;"/>
+            
 
         </h:form>
     </h:body>

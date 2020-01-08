@@ -5,9 +5,17 @@
  */
 package Modelo;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.Table;
 
 /**
@@ -17,14 +25,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "ingrediente")
+@NamedQueries({
+    @NamedQuery(name = "Ingrediente.findAll", query = "SELECT i FROM Ingrediente i")
+    , @NamedQuery(name = "Ingrediente.findById", query = "SELECT i FROM Ingrediente i WHERE i.id_ingrediente = :id_ingrediente")
+    , @NamedQuery(name = "Ingrediente.findByNombre", query = "SELECT i FROM Ingrediente i WHERE i.nombre = :nombre")})
 public class Ingrediente {
     @Id
     @Column
-    private int id_ingrediente;
+    public int id_ingrediente;
     @Column
-    private String nombre;
+    public String nombre;
     @Column 
-    private String cantidad;
+    public String cantidad;
 
     public Ingrediente() {
     }
@@ -57,4 +69,14 @@ public class Ingrediente {
     public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     } 
+    public List<Ingrediente> setItems(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panaderiaPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction entr = em.getTransaction();
+        entr.begin();
+        Query query = em.createNamedQuery("Ingrediente.findAll");
+        List<Ingrediente> datos = (List<Ingrediente>) query.getResultList();
+        return datos;    
+    }
+    
 }

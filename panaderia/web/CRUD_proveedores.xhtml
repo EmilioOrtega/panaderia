@@ -27,15 +27,15 @@ and open the template in the editor.
                 <p:dialog header="Agregar" widgetVar="dlg" resizable="false">
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputLabel  value="Nombre:" />
-                        <p:inputText id="txtNombre" value="#{client.nombre}" required="true" label="username" />
+                        <p:inputText id="txtNombre" value="#{proveedorBean.nombre}" required="true" label="username" />
 
                         <h:outputLabel  value="Teléfono:" />
-                        <p:inputText id="txtTelefono" value="#{client.nombre}" required="true" label="telefono" />
+                        <p:inputText id="txtTelefono" value="#{proveedorBean.telefono}" required="true" label="telefono" />
 
                          <h:outputLabel  value="Domicilio:" />
-                        <p:inputText id="txtDomicilio" value="#{client.nombre}" required="true" label="domicilio" />
+                         <p:inputText id="txtDomicilio" value="#{proveedorBean.domicilio}" required="true" label="domicilio" />
                         <f:facet name="footer">
-                            <p:commandButton value="Agregar" action="#{client.log()}"/>
+                            <p:commandButton value="Agregar" action="#{proveedorBean.insertar()}"/>
                         </f:facet> 
                     </h:panelGrid>
                 </p:dialog>    
@@ -50,12 +50,13 @@ and open the template in the editor.
                 <p:dialog header="Eliminar" widgetVar="dlg2" resizable="false">
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel  value="Proveedores: " />
-                        <p:selectOneMenu id="pans1" value="#{dropdownView.panes}" style="width:150px">
-                            <f:selectItem itemLabel="Proovedor" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{dropdownView.countries}" />
+                        <p:selectOneMenu id="proveedor1" value="#{proveedorBean.id_proveedor}">
+                            <f:selectItem itemLabel="elija el proveedor" itemValue="0"  noSelectionOption="true" />
+                            <f:selectItems value="#{proveedorBean.listProveedor}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id_proveedor}"/>
+                            
                         </p:selectOneMenu>
                         <f:facet name="footer">
-                            <p:commandButton value="Eliminar" action="#{client.log()}"/>
+                            <p:commandButton value="Eliminar" action="#{proveedorBean.eliminar()}"/>
                         </f:facet> 
                     </h:panelGrid>
                 </p:dialog>    
@@ -70,21 +71,22 @@ and open the template in the editor.
                 <p:dialog header="Modificar" widgetVar="dlg3" resizable="false">
                     <h:panelGrid columns="2" cellpadding="5">
                         <p:outputLabel  value="Proveedores: " />
-                        <p:selectOneMenu id="pans" value="#{dropdownView.panes}" style="width:150px">
-                            <f:selectItem itemLabel="Proveedor" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{dropdownView.countries}" />
+                        <p:selectOneMenu id="proveedor1" value="#{proveedorBean.id_proveedor}">
+                            <f:selectItem itemLabel="elija el proveedor" itemValue="0"  noSelectionOption="true" />
+                            <f:selectItems value="#{proveedorBean.listProveedor}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id_proveedor}"/>
                         </p:selectOneMenu>
+                        
                         <h:outputLabel  value="Nombre:" />
-                        <p:inputText id="txtNombre" value="#{client.nombre}" required="true" label="username" />
+                        <p:inputText id="txtNombre" value="#{proveedorBean.nombre}" required="true" label="username" />
 
 
                         <h:outputLabel  value="Teléfono:" />
-                        <p:inputText id="txtTelefono" value="#{client.nombre}" required="true" label="telefono" />
+                        <p:inputText id="txtTelefono" value="#{proveedorBean.telefono}" required="true" label="telefono" />
                         
                         <h:outputLabel  value="Domicilio:" />
-                        <p:inputText id="txtDomicilio" value="#{client.nombre}" required="true" label="domicilio" />
+                        <p:inputText id="txtDomicilio" value="#{proveedorBean.domicilio}" required="true" label="domicilio" />
                         <f:facet name="footer">
-                            <p:commandButton value="Modificar" action="#{client.log()}"/>
+                            <p:commandButton value="Modificar" action="#{proveedorBean.modificar()}"/>
                         </f:facet> 
                     </h:panelGrid>
                 </p:dialog>    

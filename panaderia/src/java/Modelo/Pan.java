@@ -5,9 +5,17 @@
  */
 package Modelo;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.Table;
 
 /**
@@ -17,6 +25,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "pan")
+@NamedQueries({
+    @NamedQuery(name = "Pan.findAll", query = "SELECT p FROM Pan p")
+    , @NamedQuery(name = "Pan.findByNombre", query = "SELECT p FROM Pan p WHERE p.nombre = :nombre")})
 public class Pan {
     @Id
     @Column
@@ -30,19 +41,16 @@ public class Pan {
     @Column
     private String caducidad;
     @Column
-    private int id_ingrediente;
-    @Column
     private int id_departamento;
 
     public Pan() {
     }
 
-    public Pan(String nombre, String precio, String cantidad, String caducidad, int id_ingrediente, int id_departamento) {
+    public Pan(String nombre, String precio, String cantidad, String caducidad, int id_departamento) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
         this.caducidad = caducidad;
-        this.id_ingrediente = id_ingrediente;
         this.id_departamento = id_departamento;
     }
 
@@ -86,13 +94,6 @@ public class Pan {
         this.caducidad = caducidad;
     }
 
-    public int getId_ingrediente() {
-        return id_ingrediente;
-    }
-
-    public void setId_ingrediente(int id_ingrediente) {
-        this.id_ingrediente = id_ingrediente;
-    }
 
     public int getId_departamento() {
         return id_departamento;
@@ -102,5 +103,14 @@ public class Pan {
         this.id_departamento = id_departamento;
     }
     
+    public List<Pan> setItems(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panaderiaPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction entr = em.getTransaction();
+        entr.begin();
+        Query query = em.createNamedQuery("Pan.findAll");
+        List<Pan> datos = (List<Pan>) query.getResultList();
+        return datos;    
+    }
     
 }

@@ -5,8 +5,13 @@
  */
 package Beans;
 
+import Modelo.Proveedor;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -19,8 +24,17 @@ public class ProveedorBean {
     public String nombre;
     public String telefono;
     public String domicilio;
+    public List<Proveedor> listProveedor;
 
+    public List<Proveedor> getListProveedor() {
+        return listProveedor;
+    }
+
+    public void setListProveedor(List<Proveedor> listProveedor) {
+        this.listProveedor = listProveedor;
+    }
     public ProveedorBean() {
+        log();
     }
 
     public ProveedorBean(String nombre, String telefono, String domicilio) {
@@ -59,5 +73,54 @@ public class ProveedorBean {
 
     public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
+    }
+    public void insertar(){       
+        Proveedor proveedor = new Proveedor(this.nombre, this.telefono, this.domicilio);
+        EntityManagerFactory emf;
+        EntityManager em;
+        emf = Persistence.createEntityManagerFactory("panaderiaPU");
+        em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(proveedor);
+        em.getTransaction().commit();       
+    }
+    public void eliminar(){
+        try{          
+            EntityManagerFactory emf;
+            emf = Persistence.createEntityManagerFactory("panaderiaPU");
+            EntityManager em = emf.createEntityManager();
+            em.getEntityManagerFactory();
+            Proveedor proveedor = em.find(Proveedor.class, this.id_proveedor);
+            em.getTransaction().begin();
+            em.remove(proveedor);
+            em.getTransaction().commit();
+            
+        }catch(Exception e){
+            throw e;
+        }
+    }
+    public void modificar(){
+        try{          
+            EntityManagerFactory emf;
+            emf = Persistence.createEntityManagerFactory("panaderiaPU");
+            EntityManager em = emf.createEntityManager();
+            em.getEntityManagerFactory();
+            Proveedor proveedor = em.find(Proveedor.class, this.id_proveedor);            
+            em.getTransaction().begin();
+            proveedor.setNombre(this.nombre);
+            proveedor.setTelefono(this.telefono);
+            proveedor.setDomicilio(this.domicilio);
+            em.getTransaction().commit();
+            
+        }catch(Exception e){
+            throw e;
+        }
+    }
+    public void log(){
+        Proveedor user;
+        user = new Proveedor();  
+        listProveedor = user.setItems();
+        for (Proveedor a : listProveedor) {
+        }    
     }
 }
