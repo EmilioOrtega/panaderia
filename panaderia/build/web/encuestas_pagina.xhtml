@@ -5,16 +5,43 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html  xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <head>
-        <title>Encuestas</title>
-    
-    </head>
-    
-    <body>
-     <h:body  style="background-color: gray; width: 1200px; height: 616px; border: 0; padding: 0; margin: 0; background-image: url('fondo_panaderia.jpg');background-repeat: no-repeat; background-position: center; background-size: 100% 100%">
-    </body>
+    <h:head>
+        <title>encuestas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body  style="background-color: gray; width: 1200px; height: 616px; border: 0; padding: 0; margin: 0; background-image: url('encuesta_fondo.png');background-repeat: no-repeat; background-position: center; background-size: 100% 100%">
+        <div style="background-color: gray; margin-top: 150px; width: 800px; margin-left: 200px; height: 100px" >
+            <h:outputLabel  value="¡Dejanos tus observaciones!" style="font-size: 70px; color: white; top:20px;left:5px" />
+        </div>
+        <div style="background-color: lightblue; margin-top: 0px; width: 800px; margin-left: 200px;" >
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:head>Responda con un si o no la siguiente encuenta <br></br></h:head>
+                <br>
+
+                </br>
+
+                <h:outputLabel for="pregunta1" value="¿El diseño de la página le resultó atractivo?" />
+                <p:inputText id="pregunta1" value="#{encuestaBean.pregunta1}" required="true" label="pregunta1" />
+
+                <h:outputLabel for="pregunta2" value="¿Navegar dentro de la página le resultó una experiencia fácil?" />
+                <p:inputText id="pregunta2" value="#{encuestaBean.pregunta2}" required="true" label="pregunta2" />
+
+                <h:outputLabel for="pregunta3" value="¿Está dispuesto a recomendar la página a algún conocido suyo?" />
+                <p:inputText id="pregunta3" value="#{encuestaBean.pregunta3}" required="true" label="pregunta3" />
+
+                <h:outputLabel for="pregunta4" value="Comentario o sugerencia" />
+                <p:inputText id="pregunta4" value="#{encuestaBean.pregunta4}" required="true" label="pregunta4" />
+
+                <f:facet name="footer">
+
+                    <p:commandButton value="Enviar" action="#{encuestaBean.insertar()}"
+                                     oncomplete="handleLoginRequest(xhr, status, args)" />
+                </f:facet>  
+            </h:panelGrid>
+        </div>
+    </h:body>
 </html>

@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Modelo/Encuesta.java</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Modelo/Cliente.java</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/ClientInsert.java</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/PanBean.java</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/EncuestaBean.java</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/index.xhtml</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/ProveedorBean.java</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/encuesta.jpg</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/IngredienteBean.java</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/FacturaBean.java</file>
+            <file>file:/C:/Users/Mariana/Documents/NetBeansProjects/panaderia-master/panaderia/panaderia/web/encuestas_pagina.xhtml</file>
+            <file>file:/C:/Users/Mariana/Documents/NetBeansProjects/panaderia-master/panaderia/panaderia/web/cuenta_cliente.xhtml</file>
+            <file>file:/C:/Users/Mariana/Documents/NetBeansProjects/panaderia-master/panaderia/panaderia/web/index.xhtml</file>
+            <file>file:/C:/Users/Mariana/Documents/NetBeansProjects/panaderia-master/panaderia/panaderia/web/admin.xhtml</file>
         </group>
     </open-files>
 </project-private>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Administrador</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body  style="background-color: gray; width: 1200px; height: 616px; border: 0; padding: 0; margin: 0; background-position: center; background-size: 100% 100%">
+        <h:form>
+            <h:outputLabel for="bienvenido_admin" value="Bienvenido administrador" style="font-size: 45px; margin-left: 20px; margin-top: 20px; color: white " />
+            <h:graphicImage value="incognito_admin.png" style="position: absolute; left: 550px; top: 0px; height: 150px; width: 100px;" />
+            <p:dataTable var="car" value="#{dtBasicView.cars}" style="margin-top: 100px; background-color: lightyellow; margin-left: 375px;width:450px;">
+                <p:column headerText="Pan">
+                    <h:outputText value="#{car.pan}" />
+                </p:column>
+
+                <p:column headerText="Ingredientes">
+                    <h:outputText value="#{car.ingredientes}" />
+                </p:column>
+
+                <p:column headerText="Proveedores">
+                    <h:outputText value="#{car.proveedores}" />
+                </p:column>
+
+            </p:dataTable>
+            <h:button value="CRUD Pan"  outcome="/CRUD_pan"  style="margin-left:375px;top:0px; width: 150px; height: 55px;"/>
+            <h:button value="CRUD Ingredientes"  outcome="/CRUD_ingredientes" style="top:0px;margin-left:0px;width: 150px; height: 55px;"/>
+            <h:button value="CRUD Proveedores"  outcome="/CRUD_proveedores" style="top:0px;margin-left:0px;width: 150px; height: 55px;"/>
+
+        </h:form>
+    </h:body>
+</html>
