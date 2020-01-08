@@ -76,7 +76,8 @@ public class IngredienteBean {
         em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(ingrediente);
-        em.getTransaction().commit();       
+        em.getTransaction().commit();     
+        em.close();
     }
     public void eliminar(){
         try{          
@@ -88,7 +89,7 @@ public class IngredienteBean {
             em.getTransaction().begin();
             em.remove(ingrediente);   
             em.getTransaction().commit();
-            
+            em.close();
         }catch(Exception e){
             throw e;
         }
@@ -105,7 +106,7 @@ public class IngredienteBean {
             ingrediente.setNombre(this.nombre);
             ingrediente.setCantidad(this.cantidad);
             em.getTransaction().commit();
-            
+            em.close();
         }catch(Exception e){
             throw e;
         }
@@ -119,6 +120,7 @@ public class IngredienteBean {
             throw e;
         }        
     }
+    
     public void log(){
         Ingrediente user;
         user = new Ingrediente();  

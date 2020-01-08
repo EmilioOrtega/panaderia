@@ -30,6 +30,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
     , @NamedQuery(name = "Cliente.findById", query = "SELECT c FROM Cliente c WHERE c.id_cliente = :id_cliente")
     , @NamedQuery(name = "Cliente.findByContra", query = "SELECT c FROM Cliente c WHERE c.contra = :contra")
+    , @NamedQuery(name = "Cliente.login", query = "SELECT c FROM Cliente c WHERE c.nombre = :nombre and c.contra = :contra")
     , @NamedQuery(name = "Cliente.findByNombre", query = "SELECT c FROM Cliente c WHERE c.nombre = :nombre")})
 public class Cliente {
     
@@ -129,6 +130,23 @@ public class Cliente {
         query.setParameter("nombre", name);
         List<Cliente> datos = (List<Cliente>) query.getResultList();
         return datos;
+    }
+    
+    public boolean encontrar(String name, String password){
+        try{
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panaderiaPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction entr = em.getTransaction();
+        entr.begin();
+        Query query = em.createNamedQuery("Cliente.login").setParameter("nombre", name).setParameter("contra", password);        
+        List<Cliente> datos = (List<Cliente>) query.getResultList();
+        if(!datos.isEmpty()){
+            return true;
+        }
+        return false;
+        }catch(Exception e){
+            return false;
+        }
     }
     
 }

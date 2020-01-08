@@ -21,39 +21,21 @@
                     <h:outputLabel for="Login" value="Login" style="color: greenyellow; position: absolute; left: 0px; top: 80px; font-size: 20px;" />
                 </h:outputLink>
 
-                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
                 <p:dialog header="Login" widgetVar="dlg" resizable="false">
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputLabel for="Mail" value="Nombre:" />
-                        <p:inputText id="txtNombre" value="#{client.nombre}" required="true" label="username" />
+                    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                    <h:panelGrid columns="2" cellpadding="5" id="hpgLogin">
+                        <h:outputLabel for="username" value="Nombre:" />
+                        <p:inputText id="username" value="#{loginBean.usuario}" required="true" label="Nombre" />
 
                         <h:outputLabel for="password" value="Contrasena:" />
-                        <p:password id="password" value="#{client.contra}" required="true" label="Contrasena" />
-
+                        <p:inputText id="password" value="#{loginBean.contrasena}" required="true" label="Contrasena" />
+                        
                         <f:facet name="footer">
-                            <p:commandButton value="Login" action="#{client.log()}" update ="data"
-                                             oncomplete="handleLoginRequest(xhr, status, args)" />
-                        </f:facet> 
-                        <p:dataTable id="data" value="#{client.listClientes}" var="cliente">
-                            <p:column headerText="Nombre">
-                                <p:outputLabel value="#{cliente.nombre}"/>
-                            </p:column>
-                            <p:column headerText="Contra">
-                                <p:outputLabel value="#{cliente.contra}"/>
-                            </p:column>
-                            <p:column headerText="Correo">
-                                <p:outputLabel value="#{cliente.correo}"/>
-                            </p:column> 
-                            <p:column headerText="Prueba">
-                                <p:outputLabel value="#{client.pu}"/>
-                            </p:column>
-                        </p:dataTable>
-
-
-
+                            <p:commandButton value="Registro" action="#{loginBean.loginControl()}" update="growl, hpgLogin"/>
+                        </f:facet>  
                     </h:panelGrid>
-                </p:dialog>    
+                </p:dialog>     
             </h:form>
             <h:form>        
                 <h:outputLabel for="Visitante" value="Visitante" style="color: greenyellow; position: absolute; left: 0px; top: 180px; font-size: 20px;" />
@@ -67,19 +49,17 @@
                     <h:outputLabel for="Admin" value="Admin" style="color: greenyellow; position: absolute; left: 0px; top: 280px; font-size: 20px;" />
                 </h:outputLink>
 
-                <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
-
                 <p:dialog header="Administrador" widgetVar="dlg3" resizable="false">
-                    <h:panelGrid columns="2" cellpadding="5">
+                    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                    <h:panelGrid columns="2" cellpadding="5" id="hpgLogin">
                         <h:outputLabel for="username" value="Nombre:" />
-                        <p:password id="username" value="#{userLoginView.username}" required="true" label="Nombre" />
+                        <p:inputText id="username" value="#{loginBean.usuario}" required="true" label="Nombre" />
 
                         <h:outputLabel for="password" value="Contrasena:" />
-                        <p:password id="password" value="#{userLoginView.password}" required="true" label="Contrasena" />
-
+                        <p:inputText id="password" value="#{loginBean.contrasena}" required="true" label="Contrasena" />
+                        
                         <f:facet name="footer">
-                            <p:commandButton value="Login" update="growl" action="#{userLoginView.login}"
-                                             oncomplete="handleLoginRequest(xhr, status, args)" />
+                            <p:commandButton value="Ingresar" action="#{loginBean.loginControl()}" update="growl, hpgLogin"/>
                         </f:facet>  
                     </h:panelGrid>
                 </p:dialog>    

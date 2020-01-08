@@ -41,7 +41,7 @@ public class PanBean {
         log();
     }
 
-    public PanBean(String nombre, String precio, String cantidad, String caducidad, int id_ingrediente, int id_departamento) {
+    public PanBean(String nombre, String precio, String cantidad, String caducidad, int id_departamento) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
@@ -103,7 +103,8 @@ public class PanBean {
         em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(pan);
-        em.getTransaction().commit();       
+        em.getTransaction().commit(); 
+        em.close();
     }
     public void eliminar(){
         try{          
@@ -115,6 +116,7 @@ public class PanBean {
             em.getTransaction().begin();
             em.remove(pan);   
             em.getTransaction().commit();
+            em.close();
             
         }catch(Exception e){
             throw e;
@@ -133,7 +135,7 @@ public class PanBean {
             ingrediente.setCantidad(this.cantidad);
             ingrediente.setCaducidad(this.caducidad);
             em.getTransaction().commit();
-            
+            em.close();
         }catch(Exception e){
             throw e;
         }
@@ -142,7 +144,7 @@ public class PanBean {
         try{
             Pan user;
             user = new Pan();  
-            listPan = user.setItems();    
+            listPan = user.setItems(); 
         }catch(Exception e){
             throw e;
         }

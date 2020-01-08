@@ -76,6 +76,7 @@ public class Ingrediente {
         entr.begin();
         Query query = em.createNamedQuery("Ingrediente.findAll");
         List<Ingrediente> datos = (List<Ingrediente>) query.getResultList();
+        em.close();
         return datos;    
     }
     
@@ -87,6 +88,7 @@ public class Ingrediente {
         Query query = em.createNamedQuery("Ingrediente.findByNombre");
         query.setParameter("nombre", name);
         List<Ingrediente> datos = (List<Ingrediente>) query.getResultList();
+        em.close();
         return datos;    
     }
 }

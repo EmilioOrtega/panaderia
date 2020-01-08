@@ -42,7 +42,7 @@ and open the template in the editor.
                             <f:selectItem itemLabel="elija el departamento" itemValue="0"  noSelectionOption="true" />
                             <f:selectItems value="#{departamentoBean.listDepartamento}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id_departamento}"/>
                         </p:selectOneMenu>
-                        <f:facet name="footer">
+                        <f:facet name="footer">                            
                             <p:commandButton value="Agregar" action="#{panBean.insertar()}"/>
                         </f:facet> 
                     </h:panelGrid>

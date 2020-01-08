@@ -110,7 +110,9 @@ public class Pan {
         entr.begin();
         Query query = em.createNamedQuery("Pan.findAll");
         List<Pan> datos = (List<Pan>) query.getResultList();
-        return datos;    
+        em.close();
+        return datos;   
+        
     }
     
 }

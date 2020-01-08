@@ -109,7 +109,6 @@ public class ClientInsert {
         em.persist(usuario);
         em.getTransaction().commit();       
     }
-    
     public void log(){
         try{
             Cliente user;
