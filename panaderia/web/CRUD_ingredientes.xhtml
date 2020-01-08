@@ -67,21 +67,33 @@ and open the template in the editor.
 
                 <p:dialog header="Modificar" widgetVar="dlg3" resizable="false">
                     <h:panelGrid columns="2" cellpadding="5">
-                        <p:outputLabel  value="Ingreientes: " />
+                        <p:outputLabel  value="Ingredientes: " />
+                        <p:dataTable id = "data1" var="ingrediente" value="#{ingredienteBean.listIngredientes}" style="margin-top: 100px; background-color: lightyellow; margin-left: 375px;width:200px;">
+                            <p:column headerText="Nombre">
+                                <h:outputText value="#{ingrediente.nombre}" />
+                            </p:column>
+                            <p:column headerText="Cantidad">
+                                <h:outputText value="#{ingrediente.cantidad}" />
+                            </p:column>
+                        </p:dataTable>
+                        
                         <p:selectOneMenu id="ingrediente1" value="#{ingredienteBean.id_ingrediente}"  >
                             <f:selectItem itemLabel="elija el ingrediente" itemValue="0"  noSelectionOption="true" />
-                            <f:selectItems value="#{ingredienteBean.listIngredientes}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id_ingrediente}" />                            
-                        </p:selectOneMenu>
+                            <f:selectItems value="#{ingredienteBean.listIngredientes}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.nombre}" actionListener="#{ingredienteBean.verDatos()}"   />
+                                                       
+                        </p:selectOneMenu>                       
+                        
                         
                         <h:outputLabel value="Nombre:" />
                         <p:inputText id="textos1" value="#{ingredienteBean.nombre}" required="true"  />
 
                         <h:outputLabel  value="Cantidad:" />
                         <p:inputText id="txtCantidad" value="#{ingredienteBean.cantidad}" required="true" />
-
+                        
                         <f:facet name="footer">
                             <p:commandButton value="Modificar" action="#{ingredienteBean.modificar()}"/>
                         </f:facet> 
+                        
                     </h:panelGrid>
                 </p:dialog>    
             </h:form>

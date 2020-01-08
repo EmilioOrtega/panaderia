@@ -79,4 +79,14 @@ public class Ingrediente {
         return datos;    
     }
     
+    public List<Ingrediente> setItems(String name){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panaderiaPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction entr = em.getTransaction();
+        entr.begin();
+        Query query = em.createNamedQuery("Ingrediente.findByNombre");
+        query.setParameter("nombre", name);
+        List<Ingrediente> datos = (List<Ingrediente>) query.getResultList();
+        return datos;    
+    }
 }

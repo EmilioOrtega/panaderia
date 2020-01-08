@@ -95,6 +95,7 @@ public class IngredienteBean {
     }
     public void modificar(){
         try{          
+            
             EntityManagerFactory emf;
             emf = Persistence.createEntityManagerFactory("panaderiaPU");
             EntityManager em = emf.createEntityManager();
@@ -109,11 +110,22 @@ public class IngredienteBean {
             throw e;
         }
     }
+    public void verDatos(){
+        try{
+            Ingrediente user;
+            user = new Ingrediente();  
+            listIngredientes = user.setItems(this.nombre);
+        }catch(Exception e){
+            throw e;
+        }        
+    }
     public void log(){
         Ingrediente user;
         user = new Ingrediente();  
         listIngredientes = user.setItems();
         for (Ingrediente a : listIngredientes) {
+            this.nombre = a.getNombre();
+            this.cantidad = a.getCantidad();
         }    
     }
 }
