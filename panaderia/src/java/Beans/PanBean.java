@@ -140,11 +140,23 @@ public class PanBean {
             throw e;
         }
     }
+    public void comprar(){
+        
+    }
     public void log(){
         try{
             Pan user;
             user = new Pan();  
             listPan = user.setItems(); 
+        }catch(Exception e){
+            throw e;
+        }
+    }
+    public void setPasteles(){
+        try{
+            Pan user;
+            user = new Pan();  
+            listPan = user.setPan(1); 
         }catch(Exception e){
             throw e;
         }

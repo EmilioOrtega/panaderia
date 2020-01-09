@@ -27,6 +27,7 @@ import javax.persistence.Table;
 @Table (name = "pan")
 @NamedQueries({
     @NamedQuery(name = "Pan.findAll", query = "SELECT p FROM Pan p")
+    , @NamedQuery(name = "Pan.findByIdDepartamento", query = "SELECT p FROM Pan p WHERE p.id_departamento = :id_departamento")
     , @NamedQuery(name = "Pan.findByNombre", query = "SELECT p FROM Pan p WHERE p.nombre = :nombre")})
 public class Pan {
     @Id
@@ -111,8 +112,17 @@ public class Pan {
         Query query = em.createNamedQuery("Pan.findAll");
         List<Pan> datos = (List<Pan>) query.getResultList();
         em.close();
-        return datos;   
-        
+        return datos;           
+    }
+    public List<Pan> setPan(int id_depart){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panaderiaPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction entr = em.getTransaction();
+        entr.begin();
+        Query query = em.createNamedQuery("Pan.findByIdDepartamento");
+        query.setParameter("id_departamento", id_depart);
+        List<Pan> datos = (List<Pan>) query.getResultList();
+        return datos;
     }
     
 }

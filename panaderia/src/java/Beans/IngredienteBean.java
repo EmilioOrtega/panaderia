@@ -122,12 +122,16 @@ public class IngredienteBean {
     }
     
     public void log(){
-        Ingrediente user;
-        user = new Ingrediente();  
-        listIngredientes = user.setItems();
-        for (Ingrediente a : listIngredientes) {
-            this.nombre = a.getNombre();
-            this.cantidad = a.getCantidad();
-        }    
+        try{
+            Ingrediente user;
+            user = new Ingrediente();  
+            listIngredientes = user.setItems();
+            for (Ingrediente a : listIngredientes) {
+                this.nombre = a.getNombre();
+                this.cantidad = a.getCantidad();
+            }
+        }catch(Exception e){
+            throw e;
+        }   
     }
 }

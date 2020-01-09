@@ -32,6 +32,7 @@ public class LoginBean implements Serializable{
             if(this.usuario.equals("root")){
                 return "";
             }else{
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("nombre", usuario);
                 return "cuenta_cliente";
             }
             
@@ -40,6 +41,10 @@ public class LoginBean implements Serializable{
         FacesContext context = FacesContext.getCurrentInstance();
         context .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Invalido"));        
         return "";
+    }
+    public String sesionIniciada(){
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("nombre", usuario);
+        return "pastelCliente";
     }
     public String loginControlAdmin(){
         Cliente user;
@@ -68,6 +73,7 @@ public class LoginBean implements Serializable{
     }
 
     public LoginBean() {
+        this.usuario = this.usuario;
     }
 
     public LoginBean(String usuario, String contrasena) {

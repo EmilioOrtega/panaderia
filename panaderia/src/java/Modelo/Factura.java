@@ -26,11 +26,7 @@ public class Factura {
     @Column
     private int id_factura;
     @Column
-    private  String cantidad;
-    @Column
     private String fecha;
-    @Column
-    private String subTotal;
     @Column
     private String Total;
     @Column
@@ -41,10 +37,8 @@ public class Factura {
     public Factura() {
     }
 
-    public Factura(String cantidad, String fecha, String subTotal, String Total, int id_cliente, int id_pan) {
-        this.cantidad = cantidad;
+    public Factura(String fecha, String Total, int id_cliente, int id_pan) {
         this.fecha = fecha;
-        this.subTotal = subTotal;
         this.Total = Total;
         this.id_cliente = id_cliente;
         this.id_pan = id_pan;
@@ -58,13 +52,6 @@ public class Factura {
         this.id_factura = id_factura;
     }
 
-    public String getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(String cantidad) {
-        this.cantidad = cantidad;
-    }
 
     public String getFecha() {
         return fecha;
@@ -74,13 +61,6 @@ public class Factura {
         this.fecha = fecha;
     }
 
-    public String getSubTotal() {
-        return subTotal;
-    }
-
-    public void setSubTotal(String subTotal) {
-        this.subTotal = subTotal;
-    }
 
     public String getTotal() {
         return Total;

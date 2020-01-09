@@ -10,9 +10,11 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
      <h:head>
+         <meta hhtp-equiv="Content-Type" content="#{sesion.verificarSesion()}"/>
         <title>HOME</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    </h:head>
+    
     <h:body style="background-color: gray; width: 1200px; height: 616px; border: 0; padding: 0; margin: 0;background-image: url('fondo_clientelogeado.jpg');background-repeat: no-repeat; background-position: center; background-size: 100% 100%">
 <p:megaMenu style="margin-top:0px; width: 1200px;">
     <p:submenu label="Información" icon="pi pi-check">
@@ -24,16 +26,23 @@ and open the template in the editor.
     <p:submenu label="Departamentos" icon="pi pi-file">
         <p:column>
             <p:submenu >
-                <p:menuitem value="Pastel" url="#"  />
-                <p:menuitem value="Pan dulce" url="#" />
-                <p:menuitem value="Helados" url="#" />
-                <p:menuitem value="Gelatina" url="#" />
-                <p:menuitem value="Pan salado" url="#" />
+                <p:menuitem value="Pastel"  outcome="/pastelCliente" />
+                <p:menuitem value="Pan dulce"  outcome="/panDulceCliente" />
+                <p:menuitem value="Helados" outcome="/heladoCliente"/>
+                <p:menuitem value="Gelatina" outcome="/gelatinaCliente" />
+                <p:menuitem value="Pan salado"  outcome="/panSaladoCliente"/>
             </p:submenu>
         </p:column>
     </p:submenu>
- 
-    <p:menuitem value="Cerrar sesion"  icon="pi pi-times" outcome="/index" />
+    
+    <p:submenu label="#{loginBean.usuario}"/>
+    <p:submenu label="Cerrar sesion" icon="pi pi-file">
+        <p:column>
+            <p:submenu >
+                <p:menuitem value="Cerrar"  outcome="#{sesion.cerrarSesion()}"/>
+            </p:submenu>
+        </p:column>
+    </p:submenu>
 </p:megaMenu>
     </h:body>
 </html>
