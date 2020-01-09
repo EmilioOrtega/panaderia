@@ -32,8 +32,8 @@ public class LoginBean implements Serializable{
             if(this.usuario.equals("root")){
                 return "";
             }else{
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("nombre", usuario);
-                return "cuenta_cliente";
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", user);
+                return "cuenta_cliente.xhtml?faces-redirect=true";
             }
             
         }
@@ -51,7 +51,9 @@ public class LoginBean implements Serializable{
         user = new Cliente(); 
         if(user.encontrar(this.usuario, this.contrasena)){
             if(this.usuario.equals("root")){
-                return "admin";
+                
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario1",this.usuario);
+                return "admin.xhtml?faces-redirect=true";
             }else{
                 return "";
             }
