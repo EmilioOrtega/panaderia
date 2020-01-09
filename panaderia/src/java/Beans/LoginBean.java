@@ -30,9 +30,25 @@ public class LoginBean implements Serializable{
         user = new Cliente(); 
         if(user.encontrar(this.usuario, this.contrasena)){
             if(this.usuario.equals("root")){
-                return "admin";
+                return "";
             }else{
                 return "cuenta_cliente";
+            }
+            
+        }
+        RequestContext.getCurrentInstance().update("growl");
+        FacesContext context = FacesContext.getCurrentInstance();
+        context .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Invalido"));        
+        return "";
+    }
+    public String loginControlAdmin(){
+        Cliente user;
+        user = new Cliente(); 
+        if(user.encontrar(this.usuario, this.contrasena)){
+            if(this.usuario.equals("root")){
+                return "admin";
+            }else{
+                return "";
             }
             
         }
