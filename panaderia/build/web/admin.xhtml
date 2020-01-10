@@ -17,7 +17,7 @@ and open the template in the editor.
         <h:form>
             <h:outputLabel for="bienvenido_admin" value="Bienvenido administrador" style="font-size: 45px; margin-left: 20px; margin-top: 20px; color: white " />
             <h:graphicImage value="incognito_admin.png" style="position: absolute; left: 550px; top: 0px; height: 150px; width: 100px;" />
-                    <div style="left: 0px;top:0px;width:201px;background-color: white">
+             <div style="background-color: white; position: absolute; left: 0px; top: 50px; ">
             <h:form>
 
                 <p:panelMenu style="width:200px">
@@ -30,27 +30,27 @@ and open the template in the editor.
                 </p:panelMenu>
             </h:form>  
         </div>      
-            <div style=" margin-left: 0px; width: 200px;">
-                <p:dataTable id = "data1" var="ingrediente" value="#{ingredienteBean.listIngredientes}"  style="left:510px;top:0px; background-color: lightyellow;width: 200px;">
+            <div style="background-color: transparent; position: absolute; left: 470px; top: 160px; ">
+                <p:dataTable id = "data1" var="ingrediente" value="#{ingredienteBean.listIngredientes}"  style="top:0px; background-color: lightyellow;width: 200px;">
                     <p:column headerText="Ingredientes">
                         <h:outputText value="#{ingrediente.nombre}" />
                     </p:column>
                 </p:dataTable>
-         
-
-            <p:dataTable id = "data2" var="pan" value="#{panBean.listPan}"  style="left:300px; top:0px; background-color: lightyellow; width: 200px;" >
+            </div>
+                 <div style="background-color: transparent; position: absolute; left: 250px; top: 160px; ">
+            <p:dataTable id = "data2" var="pan" value="#{panBean.listPan}"  style=" top:0px; background-color: lightyellow; width: 200px;" >
                 <p:column headerText="Pan">
                     <h:outputText value="#{pan.nombre}" />
                 </p:column>
             </p:dataTable>
-      
-
-            <p:dataTable id = "data3" var="proveedor" value="#{proveedorBean.listProveedor}" style="left:720px;top:0px; background-color: lightyellow;width: 200px;">
+                 </div>
+ <div style="background-color: transparent; position: absolute; left: 690px; top: 160px; ">
+            <p:dataTable id = "data3" var="proveedor" value="#{proveedorBean.listProveedor}" style="top:0px; background-color: lightyellow;width: 200px;">
                 <p:column headerText="Proveedor">
                     <h:outputText value="#{proveedor.nombre}" />
                 </p:column>
             </p:dataTable> 
-            </div>
+ </div>
 
         </h:form>
 
