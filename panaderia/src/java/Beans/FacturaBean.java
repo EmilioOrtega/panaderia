@@ -29,8 +29,27 @@ public class FacturaBean {
     public String total;
     public int id_cliente;
     public int id_pan;
+
+    
     public List<Pan> listPan;
     public List<Cliente> listCliente;
+    public List<Factura> listFactura;
+    
+    public List<Cliente> getListCliente() {
+        return listCliente;
+    }
+
+    public void setListCliente(List<Cliente> listCliente) {
+        this.listCliente = listCliente;
+    }
+
+    public List<Factura> getListFactura() {
+        return listFactura;
+    }
+
+    public void setListFactura(List<Factura> listFactura) {
+        this.listFactura = listFactura;
+    }
 
     public List<Pan> getListPan() {
         return listPan;
@@ -41,6 +60,7 @@ public class FacturaBean {
     }
     
     public FacturaBean() {
+        infoFactura();
     }
 
     public FacturaBean(String cantidad, String fecha, String Total, int id_cliente, int id_pan) {;
@@ -123,12 +143,27 @@ public class FacturaBean {
     public void setId_pan(int id_pan) {
         this.id_pan = id_pan;
     }
+    public void infoFactura(){
+        try{
+            
+            Factura user;
+            user = new Factura();
+            listFactura = user.mostrarFacturaCliente(ClientInsert.id);
+            for(Factura a : listFactura){
+                this.id_factura = a.getId_factura();
+                this.fecha = a.getFecha();
+                this.total = a.getTotal();
+                this.id_pan = a.getId_pan();
+            }
+        }catch(Exception e){
+            throw e;
+        }
+    }
     public void insertar(){ 
         getTotal();
         getId_cliente();
         Date objDate = new Date();
         this.fecha = objDate.toString();
-        
         
         Factura factura = new Factura(this.fecha, this.total, this.id_cliente, this.id_pan);
         EntityManagerFactory emf;

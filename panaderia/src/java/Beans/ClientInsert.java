@@ -25,6 +25,7 @@ import javax.persistence.Query;
 @RequestScoped
 public class ClientInsert {
     
+    static public int id;
     public String nombre;
     public String apellido_p;
     public String apellido_m;
@@ -33,6 +34,10 @@ public class ClientInsert {
     public String telefono;
     public String pu;
 
+    public ClientInsert() {
+        infoCliente();
+    }
+    
     public String getPu() {
         return pu;
     }
@@ -108,6 +113,74 @@ public class ClientInsert {
         em.getTransaction().begin();
         em.persist(usuario);
         em.getTransaction().commit();       
+    }
+    public void infoCliente(){
+        try{
+            Cliente user;
+            user = new Cliente();
+            listClientes = user.login(LoginBean.usuario);
+            for(Cliente a : listClientes){
+                this.id = a.getId_cliente();
+                this.nombre = a.getNombre();
+                this.apellido_p = a.getApellido_p();
+                this.apellido_m = a.getApellido_m();
+                this.contra = a.getContra();
+                this.correo = a.getCorreo();
+                this.telefono = a.getTelefono();
+            }
+        }catch(Exception e){
+            throw e;
+        }
+    }
+    public String eliminar(){
+        try{ 
+            
+            int id=0;
+            Cliente usuario = new Cliente();
+            listClientes = usuario.login(LoginBean.usuario);
+            for(Cliente a: listClientes)
+            {
+                id = a.getId_cliente();
+            }
+            EntityManagerFactory emf;
+            emf = Persistence.createEntityManagerFactory("panaderiaPU");
+            EntityManager em = emf.createEntityManager();
+            em.getEntityManagerFactory();
+            Cliente cliente = em.find(Cliente.class, id);
+            em.getTransaction().begin();
+            em.remove(cliente);
+            em.getTransaction().commit();
+            return "index.xhtml?faces-redirect=true";
+            
+        }catch(Exception e){
+            return "";
+        }
+    }
+    public void modificar(){
+        try{      
+            int id=0;
+            Cliente usuario = new Cliente();
+            listClientes = usuario.login(LoginBean.usuario);
+            for(Cliente a: listClientes)
+            {
+                id = a.getId_cliente();
+            }
+            EntityManagerFactory emf;
+            emf = Persistence.createEntityManagerFactory("panaderiaPU");
+            EntityManager em = emf.createEntityManager();
+            em.getEntityManagerFactory();
+            Cliente cliente = em.find(Cliente.class, id);            
+            em.getTransaction().begin();
+            cliente.setNombre(this.nombre);
+            cliente.setApellido_p(this.apellido_p);
+            cliente.setApellido_m(this.apellido_m);
+            cliente.setContra(this.contra);
+            cliente.setCorreo(this.correo);
+            cliente.setTelefono(this.telefono);;
+            em.getTransaction().commit();            
+        }catch(Exception e){
+            throw e;
+        }
     }
     public void log(){
         try{
