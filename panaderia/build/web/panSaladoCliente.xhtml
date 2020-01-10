@@ -10,14 +10,14 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-         <meta hhtp-equiv="Content-Type" content="#{sesion.verificarSesion()}"/>
+        <meta hhtp-equiv="Content-Type" content="#{sesion.verificarSesion()}"/>
         <title>PAN SALADO</title>
     </h:head>
-    <h:body  style="background-color: gray; width: 1200px; height: 616px; border: 0; padding: 0; margin: 0; background-position: center; background-size: 100% 100%">
+    <h:body style="background-color: gray; width: 1200px; height: 616px; border: 0; padding: 0; margin: 0;background-image: url('panmuestra5.jpg');background-repeat: no-repeat; background-position: center; background-size: 100% 100%">
+        <h:outputLabel for="bienvenido_admin" value="Pan Salado" style="font-size: 45px; margin-left: 70px; margin-top: 70px; color: white " />
         <h:form>
-            <p:outputLabel  value="#{loginBean.usuario}"/>
-            <h:outputLabel for="bienvenido_admin" value="Pasteles" style="font-size: 45px; margin-left: 70px; margin-top: 70px; color: white " />
-            <p:dataTable id = "data1" var="pasteles" value="#{panSalado.listPan}" style="margin-top: 100px; background-color: lightyellow; margin-left: 375px;width:500px;">
+            <div style="margin-top: 100px; background-color: lightyellow; margin-left: 375px;width:500px; background-color: transparent">
+            <p:dataTable id = "data1" var="pasteles" value="#{panSalado.listPan}" style="top: 0px; background-color: lightyellow;width:500px;">
                 <p:column headerText="Nombre">
                     <h:outputText value="#{pasteles.nombre}" />
                 </p:column>
@@ -31,13 +31,16 @@ and open the template in the editor.
                     <h:outputText value="#{pasteles.cantidad}" />
                 </p:column>
             </p:dataTable>
-            <p:outputLabel  value="Pasteles " />
-            <p:selectOneMenu id="departamento1" value="#{facturaBean.id_pan}">
-                            <f:selectItem itemLabel="elija el departamento" itemValue="0"  noSelectionOption="true" />
-                            <f:selectItems value="#{panSalado.listPan}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id_pan}"/>
-                        </p:selectOneMenu>
-       
-            <p:commandButton value="Comprar" action="#{facturaBean.insertar()}"/>  
+            <div style="right:0px;top:0px;width:500px; background-color: transparent"> 
+            <p:selectOneMenu id="departamento1" value="#{facturaBean.id_pan}" style=" top:0px; left:170px">
+                <f:selectItem itemLabel="Elija el pan salado" itemValue="0"  noSelectionOption="true" />
+                <f:selectItems value="#{panSalado.listPan}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id_pan}"/>
+            </p:selectOneMenu>
+            </div>
+                <div  style="left:0px;top:0px;width:500px; background-color: transparent"> 
+            <p:commandButton value="Comprar" action="#{facturaBean.insertar()}" style=" top:0px; left:192px"/>  
+                </div>
+            </div>
         </h:form>
     </h:body>
 </html>

@@ -17,28 +17,43 @@ and open the template in the editor.
         <h:form>
             <h:outputLabel for="bienvenido_admin" value="Bienvenido administrador" style="font-size: 45px; margin-left: 20px; margin-top: 20px; color: white " />
             <h:graphicImage value="incognito_admin.png" style="position: absolute; left: 550px; top: 0px; height: 150px; width: 100px;" />
-            <p:dataTable id = "data1" var="ingrediente" value="#{ingredienteBean.listIngredientes}" style="margin-top: 100px; background-color: lightyellow; margin-left: 280px;width:200px;">
-                <p:column headerText="Ingredientes">
-                    <h:outputText value="#{ingrediente.nombre}" />
-                </p:column>
-            </p:dataTable>
-            <p:dataTable id = "data2" var="pan" value="#{panBean.listPan}" style="margin-top: -118px; background-color: lightyellow; margin-left: 490px;width:200px;">
+                    <div style="left: 0px;top:0px;width:201px;background-color: white">
+            <h:form>
+
+                <p:panelMenu style="width:200px">
+                    <p:submenu label="Opciones de Administrador" style="background-color: blue">
+                        <p:menuitem value="CRUD Panes" outcome="CRUD_pan" icon="pi pi-save"  />
+                        <p:menuitem value="CRUD Ingredientes" outcome="CRUD_ingredientes"  icon="pi pi-refresh" />
+                        <p:menuitem value="CRUD Proveedores" outcome="CRUD_proveedores"  icon="pi pi-refresh" />
+                        <p:menuitem value="Cerrar sesión" action="#{sesion.cerrarSesion()}"  icon="pi pi-refresh" />
+                    </p:submenu>
+                </p:panelMenu>
+            </h:form>  
+        </div>      
+            <div style=" margin-left: 0px; width: 200px;">
+                <p:dataTable id = "data1" var="ingrediente" value="#{ingredienteBean.listIngredientes}"  style="left:510px;top:0px; background-color: lightyellow;width: 200px;">
+                    <p:column headerText="Ingredientes">
+                        <h:outputText value="#{ingrediente.nombre}" />
+                    </p:column>
+                </p:dataTable>
+         
+
+            <p:dataTable id = "data2" var="pan" value="#{panBean.listPan}"  style="left:300px; top:0px; background-color: lightyellow; width: 200px;" >
                 <p:column headerText="Pan">
                     <h:outputText value="#{pan.nombre}" />
                 </p:column>
             </p:dataTable>
-            <p:dataTable id = "data3" var="proveedor" value="#{proveedorBean.listProveedor}" style="margin-top: -234px; background-color: lightyellow; margin-left: 700px;width:200px;">
+      
+
+            <p:dataTable id = "data3" var="proveedor" value="#{proveedorBean.listProveedor}" style="left:720px;top:0px; background-color: lightyellow;width: 200px;">
                 <p:column headerText="Proveedor">
                     <h:outputText value="#{proveedor.nombre}" />
                 </p:column>
-            </p:dataTable>   
+            </p:dataTable> 
+            </div>
 
         </h:form>
-        <div style="left: 20px;top:170px;width:250px;height:200px;">
-            <h:button value="CRUD Pan"  outcome="/CRUD_pan"  style="left:0px;top:56px; width: 200px; height: 55px;"/>
-            <h:button value="CRUD Ingredientes"  outcome="/CRUD_ingredientes" style="top:0px;left: 0px;width: 200px; height: 55px;"/>
-            <h:button value="CRUD Proveedores"  outcome="/CRUD_proveedores" style="top:113px;left:0px;width: 200px; height: 55px;"/>   
-        </div>      
+
 
     </h:body>
 </html>
