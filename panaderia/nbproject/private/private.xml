@@ -6,38 +6,33 @@
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Modelo/Factura.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/EncuestaBean.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/encuestas_pagina.xhtml</file>
+            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/panHelado.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/CloseSessionBean.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Modelo/Pan.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Modelo/Ingrediente.java</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Modelo/Departamento.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/panSaladoCliente.xhtml</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Modelo/Cliente.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/ClientInsert.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/PanBean.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/heladoCliente.xhtml</file>
+            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/panGelatina.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/LoginBean.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/PanBuy.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/index.xhtml</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/ProveedorBean.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/CRUD_proveedores.xhtml</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/encuesta.jpg</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/gelatinaCliente.xhtml</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/FacturaBean.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/admin.xhtml</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/panSalado.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/sesionBean.java</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Modelo/Proveedor.java</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/welcomePrimefaces.xhtml</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/cuenta_cliente.xhtml</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/IngredienteBean.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/pastelCliente.xhtml</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/crud_fondo.png</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Modelo/Encuesta.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/panDulceCliente.xhtml</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/conf/persistence.xml</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/DepartamentoBean.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/CRUD_ingredientes.xhtml</file>
-            <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/admin1.png</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/src/java/Beans/PanDulce.java</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/CRUD_pan.xhtml</file>
             <file>file:/C:/Users/Emilio/Documents/GitHub/panaderia/panaderia/web/incognito_admin.png</file>

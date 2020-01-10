@@ -23,7 +23,7 @@ public class sesionBean implements Serializable{
     public String admin;
     public void verificarSesion(){
         try{
-            Cliente usuario = (Cliente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+            Cliente usuario = (Cliente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");            
             if(usuario == null ){ 
                 FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
             }

@@ -140,6 +140,24 @@ public class PanBean {
             throw e;
         }
     }
+    public void unPanMenos(int id, String name, String priece, String howMuch, String cad){
+        try{          
+            EntityManagerFactory emf;
+            emf = Persistence.createEntityManagerFactory("panaderiaPU");
+            EntityManager em = emf.createEntityManager();
+            em.getEntityManagerFactory();
+            Pan ingrediente = em.find(Pan.class, id);            
+            em.getTransaction().begin();
+            ingrediente.setNombre(name);
+            ingrediente.setPrecio(priece);
+            ingrediente.setCantidad(howMuch);
+            ingrediente.setCaducidad(cad);
+            em.getTransaction().commit();
+            em.close();
+        }catch(Exception e){
+            throw e;
+        }
+    }
     public void comprar(){
         
     }

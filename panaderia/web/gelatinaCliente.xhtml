@@ -16,12 +16,29 @@ and open the template in the editor.
    </h:head>
     <h:body  style="background-color: gray; width: 1200px; height: 616px; border: 0; padding: 0; margin: 0; background-position: center; background-size: 100% 100%">
         <h:form>
-            <h:outputLabel for="bienvenido_admin" value="Gelatinas" style="font-size: 45px; margin-left: 20px; margin-top: 20px; color: white " />
-            <p:dataTable id = "data1" var="Panes" value="#{ingredienteBean.listIngredientes}" style="margin-top: 100px; background-color: lightyellow; margin-left: 375px;width:200px;">
-                <p:column headerText="Ingredientes">
-                    <h:outputText value="#{ingrediente.nombre}" />
+        <p:outputLabel  value="#{loginBean.usuario}"/>
+            <h:outputLabel for="bienvenido_admin" value="Pasteles" style="font-size: 45px; margin-left: 70px; margin-top: 70px; color: white " />
+            <p:dataTable id = "data1" var="pasteles" value="#{panGelatina.listPan}" style="margin-top: 100px; background-color: lightyellow; margin-left: 375px;width:500px;">
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{pasteles.nombre}" />
+                </p:column>
+                <p:column headerText="Precio">
+                    <h:outputText value="#{pasteles.precio}" />
+                </p:column>
+                <p:column headerText="Caducidad">
+                    <h:outputText value="#{pasteles.caducidad}" />
+                </p:column>
+                <p:column headerText="Cantidad">
+                    <h:outputText value="#{pasteles.cantidad}" />
                 </p:column>
             </p:dataTable>
+            <p:outputLabel  value="Pasteles " />
+            <p:selectOneMenu id="departamento1" value="#{facturaBean.id_pan}">
+                            <f:selectItem itemLabel="elija el departamento" itemValue="0"  noSelectionOption="true" />
+                            <f:selectItems value="#{panGelatina.listPan}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.id_pan}"/>
+                        </p:selectOneMenu>
+       
+            <p:commandButton value="Comprar" action="#{facturaBean.insertar()}"/>  
         </h:form>
     </h:body>
 </html>

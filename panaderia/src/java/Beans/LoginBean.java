@@ -20,10 +20,9 @@ import org.primefaces.context.RequestContext;
 @ManagedBean (name = "loginBean")
 @SessionScoped
 public class LoginBean implements Serializable{
-    public String usuario;
+    static public String usuario;
     public String contrasena;
     public Cliente cliente;
-    
     
     public String loginControl(){
         Cliente user;
@@ -75,7 +74,7 @@ public class LoginBean implements Serializable{
     }
 
     public LoginBean() {
-        this.usuario = this.usuario;
+        getUsuario();
     }
 
     public LoginBean(String usuario, String contrasena) {

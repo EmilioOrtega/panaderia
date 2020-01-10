@@ -9,17 +9,14 @@ import Modelo.Pan;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
  * @author Emilio
  */
-@ManagedBean (name = "panBuy")
+@ManagedBean (name = "panHelado")
 @RequestScoped
-public class PanBuy {
+public class panHelado {
     public int id_pan;
     public String nombre;
     public String precio;
@@ -28,11 +25,11 @@ public class PanBuy {
     public int id_departamento;
     
     public List<Pan> listPan;
-    public PanBuy() {
-        setPasteles();
+    public panHelado() {
+        setPanSalado();
     }
 
-    public PanBuy(String nombre, String precio, String cantidad, String caducidad, int id_departamento) {
+    public panHelado(String nombre, String precio, String cantidad, String caducidad, int id_departamento) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
@@ -94,11 +91,11 @@ public class PanBuy {
     public void setId_departamento(int id_departamento) {
         this.id_departamento = id_departamento;
     }
-    public void setPasteles(){
+    public void setPanSalado(){
         try{
             Pan pan;
             pan = new Pan();  
-            listPan = pan.setPan(1);
+            listPan = pan.setPan(3);
         }catch(Exception e){
             throw e;
         }
