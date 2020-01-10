@@ -23,15 +23,17 @@ public class LoginBean implements Serializable{
     static public String usuario;
     public String contrasena;
     public Cliente cliente;
-    
+   
+
     public String loginControl(){
         Cliente user;
         user = new Cliente(); 
         if(user.encontrar(this.usuario, this.contrasena)){
-            if(this.usuario.equals("root")){
+            if(this.contrasena.equals("root")){
                 return "";
             }else{
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", user);
+                
                 return "cuenta_cliente.xhtml?faces-redirect=true";
             }
             
@@ -40,6 +42,13 @@ public class LoginBean implements Serializable{
         FacesContext context = FacesContext.getCurrentInstance();
         context .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Invalido"));        
         return "";
+    }
+        public String loginControlVisitante(){
+
+        this.contrasena="visitante";
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", this.contrasena);  
+    
+        return "cuenta_cliente.xhtml?faces-redirect=true";
     }
     public String sesionIniciada(){
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("nombre", usuario);

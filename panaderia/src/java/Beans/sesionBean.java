@@ -20,22 +20,28 @@ import org.primefaces.context.RequestContext;
 @ManagedBean (name = "sesion")
 @SessionScoped
 public class sesionBean implements Serializable{
-    public String admin;
+    public  String admin;
+    public  String vist;
+    public  Cliente usuario;
+    
     public void verificarSesion(){
         try{
-            Cliente usuario = (Cliente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");            
-            if(usuario == null ){ 
-                FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+             usuario = (Cliente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"); 
+                  vist = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"); 
+            if(usuario == null && (!vist.equals("visitante")) ){ 
+                         FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+                        
+               
             }
  
         }catch(Exception e){
             
         }
-    }
+    }   
     
         public void verificarSesionAdmin(){
         try{
-             admin = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario1");
+             admin = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
            
             if(admin.equals("root")){
    
