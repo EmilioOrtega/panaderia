@@ -5,14 +5,17 @@
  */
 package Modelo;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.Table;
 
 /**
@@ -21,6 +24,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table (name = "factura")
+@NamedQueries({
+    @NamedQuery(name = "Factura.findAll", query = "SELECT f FROM Factura f")
+    , @NamedQuery(name = "Factura.findByIdC", query = "SELECT f FROM Factura f WHERE f.id_cliente = :id_cliente")})
 public class Factura {
     @Id
     @Column
@@ -85,5 +91,14 @@ public class Factura {
     public void setId_pan(int id_pan) {
         this.id_pan = id_pan;
     }
-    
+    public List<Factura> mostrarFacturaCliente(int id){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("panaderiaPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction entr = em.getTransaction();
+        entr.begin();
+        Query query = em.createNamedQuery("Factura.findByIdC");
+        query.setParameter("id_cliente", id);
+        List<Factura> datos = (List<Factura>) query.getResultList();
+        return datos;
+    }
 }
