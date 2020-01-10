@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cuenta inv</title>
+        <meta hhtp-equiv="Content-Type" content="#{sesion.verificarSesionInvitado()}"/>
+    </h:head>
+    <h:body style="background-color: gray; width: 1200px; height: 616px; border: 0; padding: 0; margin: 0;background-image: url('fondo_clientelogeado.jpg');background-repeat: no-repeat; background-position: center; background-size: 100% 100%">
+
+        <h:form >
+            <p:megaMenu style="margin-top:0px; width: 1239px; background-color:transparent;border:0px">
+                <p:submenu label="#{loginBean.contrasena}"/>
+                <p:submenu label="Departamentos" icon="pi pi-file">
+                    <p:column>
+                        <p:submenu >
+                            <p:menuitem value="Pastel"  outcome="/pastelInv" />
+                            <p:menuitem value="Pan dulce"  outcome="/PandulceInv" />
+                            <p:menuitem value="Helados" outcome="/HeladoInv"/>
+                            <p:menuitem value="Gelatina" outcome="/GelatinaInv" />
+                            <p:menuitem value="Pan salado"  outcome="/PansaladoInv"/>
+                        </p:submenu>
+                    </p:column>
+                </p:submenu>
+                <p:submenu label="Encuesta" icon="pi pi-check"  >             
+                    <p:column>
+                        <p:submenu >
+                            <p:menuitem value="Ver encuesta"  outcome="/encuestas_pagina" />
+                        </p:submenu>
+                    </p:column>
+                </p:submenu>
+
+
+                <p:submenu label="Cerrar sesion" icon="pi pi-file">
+                    <p:column>
+                        <p:submenu >
+                            <p:menuitem value="Cerrar" action="#{sesion.cerrarSesion()}" />
+                        </p:submenu>
+                    </p:column>
+                </p:submenu>
+            </p:megaMenu>
+        </h:form>
+    </h:body>
+</html>

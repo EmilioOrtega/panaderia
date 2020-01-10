@@ -32,7 +32,7 @@ public class LoginBean implements Serializable{
             if(this.contrasena.equals("root")){
                 return "";
             }else{
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", user);
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", this.usuario);
                 
                 return "cuenta_cliente.xhtml?faces-redirect=true";
             }
@@ -43,24 +43,23 @@ public class LoginBean implements Serializable{
         context .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Invalido"));        
         return "";
     }
+    
         public String loginControlVisitante(){
 
-        this.contrasena="visitante";
+
+                contrasena="visitante";
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", this.contrasena);  
     
-        return "cuenta_cliente.xhtml?faces-redirect=true";
+        return "cuenta_inv.xhtml?faces-redirect=true";
     }
-    public String sesionIniciada(){
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("nombre", usuario);
-        return "pastelCliente";
-    }
+
     public String loginControlAdmin(){
         Cliente user;
         user = new Cliente(); 
         if(user.encontrar(this.usuario, this.contrasena)){
             if(this.usuario.equals("root")){
-                
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario1",this.usuario);
+                this.contrasena="root";
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", this.contrasena); 
                 return "admin.xhtml?faces-redirect=true";
             }else{
                 return "";

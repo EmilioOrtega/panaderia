@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Gelatina inv</title>
+        <meta hhtp-equiv="Content-Type" content="#{sesion.verificarSesionInvitado()}"/>
+    </h:head>
+    <h:body style="background-color: gray; width: 1200px; height: 616px; border: 0; padding: 0; margin: 0;background-image: url('panmuestra4.jpg');background-repeat: no-repeat; background-position: center; background-size: 100% 100%">
+        <h:outputLabel for="bienvenido_admin" value="Gelatinas" style="font-size: 45px; margin-left: 70px; margin-top: 70px; color: white " />
+        <h:form>
+            <div style="margin-top: 100px; background-color: lightyellow; margin-left: 375px;width:500px; background-color: transparent">
+                <p:dataTable id = "data1" var="pasteles" value="#{panGelatina.listPan}" style="top: 0px; background-color: lightyellow;width:500px;" >
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{pasteles.nombre}" />
+                    </p:column>
+                    <p:column headerText="Precio">
+                        <h:outputText value="#{pasteles.precio}" />
+                    </p:column>
+                    <p:column headerText="Caducidad">
+                        <h:outputText value="#{pasteles.caducidad}" />
+                    </p:column>
+                    <p:column headerText="Cantidad">
+                        <h:outputText value="#{pasteles.cantidad}" />
+                    </p:column>
+                </p:dataTable>
+
+            </div>
+        </h:form>
+    </h:body>
+</html>

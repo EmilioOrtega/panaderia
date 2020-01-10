@@ -5,15 +5,10 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <meta hhtp-equiv="Content-Type" content="#{sesion.cerrarSesion()}"/>
         <Title>Panaderia</Title>
     </h:head>
     <h:body  style="background-color: gray; width: 1200px; height: 616px; border: 0; padding: 0; margin: 0; background-image: url('fondo_panaderia1.jpg');background-repeat: no-repeat; background-position: center; background-size: 100% 100%">
-        <h:link outcome="/admin" value="admin" style="color: red;">
-        </h:link>
-        <br>
-        </br>
-        <h:link outcome="/cuenta_cliente" value="cuenta_cliente" style="color: red;">
-        </h:link>
         <div style="background-color: transparent; position: absolute; right: 600px; top: 30px; height: 400px; width: 80px;">
             <h:form>        
                 <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
@@ -29,10 +24,10 @@
                         <p:inputText id="username" value="#{loginBean.usuario}" required="true" label="Nombre" />
 
                         <h:outputLabel for="password" value="Contrasena:" />
-                        <p:inputText id="password" value="#{loginBean.contrasena}" required="true" label="Contrasena" />
+                        <p:password id="password" value="#{loginBean.contrasena}" required="true" label="Contrasena" />
                         
                         <f:facet name="footer">
-                            <p:commandButton value="Registro" action="#{loginBean.loginControl()}" update="growl, hpgLogin"/>
+                            <p:commandButton value="Ingresar" action="#{loginBean.loginControl()}" update="growl, hpgLogin"/>
                         </f:facet>  
                     </h:panelGrid>
                 </p:dialog>     
@@ -56,7 +51,7 @@
                         <p:inputText id="username" value="#{loginBean.usuario}" required="true" label="Nombre" />
 
                         <h:outputLabel for="password" value="Contrasena:" />
-                        <p:inputText id="password" value="#{loginBean.contrasena}" required="true" label="Contrasena" />
+                        <p:password id="password" value="#{loginBean.contrasena}" required="true" label="Contrasena" />
                         
                         <f:facet name="footer">
                             <p:commandButton value="Ingresar" action="#{loginBean.loginControlAdmin()}" update="growl, hpgLogin"/>

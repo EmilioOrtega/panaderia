@@ -22,36 +22,44 @@ import org.primefaces.context.RequestContext;
 public class sesionBean implements Serializable{
     public  String admin;
     public  String vist;
-    public  Cliente usuario;
+    public  String usuario;
+    public String inv;
     
     public void verificarSesion(){
         try{
-             usuario = (Cliente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"); 
-                  vist = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"); 
-            if(usuario == null && (!vist.equals("visitante")) ){ 
+             usuario = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario"); 
+            if(usuario.equals("") ||( usuario.equals("visitante"))){ 
                          FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-                        
-               
             }
  
         }catch(Exception e){
             
         }
     }   
+        
+        public void verificarSesionInvitado(){
+        try{
+             vist = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+           
+            if(!vist.equals("visitante") || vist.equals(null)){
+                   FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+            }
+
+            
+        }catch(Exception e){
+            
+        }
+    }
     
         public void verificarSesionAdmin(){
         try{
              admin = (String) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
            
-            if(admin.equals("root")){
-   
+            if(!admin.equals("root")){
+                   FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
             }
-            else if(admin==null){
-                FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-            }
-            else{
-                  FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml"); 
-            }
+
+            
         }catch(Exception e){
             
         }
